@@ -1,0 +1,195 @@
+/* Ensure the body has no background */
+body {
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+/* Main page container */
+.upload-resume-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background: none;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+/* White card for the header and content */
+.upload-resume-header-card {
+  background: none;
+  border-radius: 4px;
+  max-width: 900px;
+  margin: 16px auto 0 auto;
+  box-shadow: none;
+  padding: 32px 0 32px 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header section */
+.upload-resume-header {
+  margin: 0;
+  padding: 0 40px;
+  height: 80px;
+  background: none;
+  box-shadow: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: relative;
+}
+
+/* Logo */
+.logo {
+  display: none;
+}
+
+/* Navbar spacing */
+nav {
+  margin: 0;
+  padding: 0;
+}
+
+/* Progress Steps Bar */
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 60px auto 24px auto;
+  padding: 0 32px;
+  background: none;
+  position: relative;
+  z-index: 2;
+  min-height: 56px;
+  margin-top: 20px; /* Add margin to push the lines lower */
+}
+
+/* Step container */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  z-index: 3;
+}
+
+/* Step number circle */
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #9e9e9e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+/* Active step number */
+.step.active .step-number {
+  background-color: #16204d;
+  color: #ffffff;
+  border-color: #16204d;
+  box-shadow: 0 2px 8px rgba(22, 32, 77, 0.3);
+}
+
+/* Step title */
+.step-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #16204d;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Connecting lines between steps */
+.step-line {
+  flex: 1;
+  height: 4px; /* Increased height to make the lines longer */
+  background-color: #e0e0e0;
+  margin: 0 20px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  top: -16px;
+}
+
+/* Completed line styling - turns blue when step is passed */
+.step-line.completed {
+  background-color: #16204d;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+.subsection-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #16204d;
+  margin-bottom: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .progress-steps {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 8px;
+    align-items: center;
+  }
+
+  .step {
+    flex-direction: row;
+    width: 100%;
+    max-width: 300px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .step-number {
+    margin-right: 12px;
+    margin-bottom: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .step-title {
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  /* Hide connecting lines on mobile */
+  .progress-steps .step:first-child::after,
+  .progress-steps .step:nth-child(3)::before,
+  .step-line {
+    display: none;
+  }
+
+  /* Add vertical connector for mobile */
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 15px;
+    width: 2px;
+    height: 20px;
+    background-color: #e0e0e0;
+  }
+
+  .step.completed:not(:last-child)::after {
+    background-color: #16204d;
+  }
+}
