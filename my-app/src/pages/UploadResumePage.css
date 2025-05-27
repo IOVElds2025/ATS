@@ -1,9 +1,3 @@
-/* Ensure the body has no background */
-body {
-  margin: 0;
-  padding: 0;
-  background: none;
-}
 
 /* Main page container */
 .upload-resume-page {

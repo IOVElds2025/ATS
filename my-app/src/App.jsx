@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import Register from './pages/register';
 import Login from './pages/login';
+import UploadResumePage from './pages/UploadResumePage';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <Routes>
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/UploadResume" element={<UploadResumePage />} />
         </Routes>
     </div>
   );
