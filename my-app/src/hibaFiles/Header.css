@@ -1,0 +1,135 @@
+/* Header.css - Improved version for screenshot match */
+
+/* Landing page indicator - black bar at top */
+.landing-indicator {
+    width: 100%;
+    background-color: #000;
+    color: #f5f5f5;
+    padding: 2px 20px;
+    font-size: 0.8rem;
+  }
+  
+  /* Main white header area */
+  .header-main {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+  }
+  
+  /* Logo styling */
+  .header-logo {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .header-logo-accent {
+    color: #ef4444;
+  }
+  
+  /* Navigation links in white header */
+  .header-nav {
+    display: flex;
+    /* Fallback for browsers that don't support gap */
+    margin-left: -25px;
+  }
+  
+  .header-nav > * {
+    margin-left: 25px;
+  }
+  
+  /* For modern browsers */
+  @supports (gap: 25px) {
+    .header-nav {
+      gap: 25px;
+      margin-left: 0;
+    }
+    
+    .header-nav > * {
+      margin-left: 0;
+    }
+  }
+  
+  .header-nav-link {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .header-nav-link.active {
+    color: #ef4444;
+  }
+  
+  /* Black navigation tabs bar */
+  .nav-tabs {
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  /* Container for tab items */
+  .tabs-container {
+    display: flex;
+    /* Fallback for browsers that don't support gap */
+    margin-left: -25px;
+  }
+  
+  .tabs-container > * {
+    margin-left: 25px;
+  }
+  
+  /* For modern browsers */
+  @supports (gap: 25px) {
+    .tabs-container {
+      gap: 25px;
+      margin-left: 0;
+    }
+    
+    .tabs-container > * {
+      margin-left: 0;
+    }
+  }
+  
+  /* Individual tab styling */
+  .tab {
+    color: #fff;
+    position: relative;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    color: #ef4444;
+  }
+  
+  /* Red dot indicator below active tab */
+  .tab-indicator {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #ef4444;
+    border-radius: 50%;
+  }
+  
+  /* Login button styling */
+  .login-btn {
+    background-color: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+  .login-btn:hover {
+    background-color: #dc2626;
+  }

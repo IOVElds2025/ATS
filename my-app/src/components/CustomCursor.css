@@ -1,0 +1,129 @@
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    will-change: transform;
+    transition: all 0.15s ease;
+    transform-origin: center;
+  }
+  
+  .custom-cursor::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease;
+    opacity: 0.8;
+  }
+  
+  .custom-cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    filter: blur(1px);
+    transition: all 0.15s ease;
+  }
+  
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    will-change: transform;
+    transition: transform 0.1s ease;
+    opacity: 0.9;
+  }
+  
+  /* Enhanced hover effects */
+  .custom-cursor.cursor-hovering {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .cursor-dot.cursor-hovering {
+    opacity: 0;
+  }
+  
+  /* Interactive element hover states */
+  a:hover ~ .custom-cursor,
+  button:hover ~ .custom-cursor,
+  input:hover ~ .custom-cursor,
+  textarea:hover ~ .custom-cursor,
+  select:hover ~ .custom-cursor,
+  [role="button"]:hover ~ .custom-cursor,
+  .clickable:hover ~ .custom-cursor,
+  .interactive:hover ~ .custom-cursor {
+    width: 36px;
+    height: 36px;
+  }
+  
+  /* Color adaptation states */
+  .custom-cursor.on-dark,
+  .cursor-dot.on-dark {
+    mix-blend-mode: difference;
+  }
+  
+  .custom-cursor.on-light,
+  .cursor-dot.on-light {
+    mix-blend-mode: difference;
+  }
+  
+  /* Transparent background handling */
+  .custom-cursor.on-transparent,
+  .cursor-dot.on-transparent {
+    mix-blend-mode: difference;
+  }
+  
+  /* Image background handling */
+  .custom-cursor.on-image,
+  .cursor-dot.on-image {
+    mix-blend-mode: difference;
+  }
+  
+  /* Gradient background handling */
+  .custom-cursor.on-gradient,
+  .cursor-dot.on-gradient {
+    mix-blend-mode: difference;
+  }
+  
+  /* Hide native cursor */
+  .hide-cursor {
+    cursor: none !important;
+  }
+  
+  /* Hide on mobile and touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .custom-cursor,
+    .cursor-dot {
+      display: none;
+    }
+  }
+  
+  /* Ensure cursor is visible on all backgrounds */
+  .custom-cursor::before,
+  .custom-cursor::after {
+    mix-blend-mode: difference;
+  }
