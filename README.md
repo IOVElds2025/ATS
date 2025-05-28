@@ -57,6 +57,7 @@
 ---
 
 ### 🧑‍💼 Recruiter
+- [ ] Expolre
 - [ ] Dashboard
 - [ ] Profile
 - [ ] Your Job Posts Page
