@@ -1,7 +1,7 @@
-import { Routes, Route, Link } from 'react-router-dom';
 import Register from './pages/register';
-import Login from './pages/login';
-import UploadResumePage from './pages/UploadResumePage';
+import './index.css';
+import Explore from './pages/Explore';
+
 
 function App() {
   return <UploadResumePage/>;
