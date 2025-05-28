@@ -6,30 +6,31 @@
 
 ## 🚀 Landing Pages
 
-1. **Hive Landing Page**
+1. **Hive Landing Page (ilham)**
+   - [ ] header
    - [ ] Layout & structure
    - [ ] Hero section
    - [ ] about us
    - [ ] Features section
    - [ ] Our Team
    - [ ] Contact
-   - [ ] CTA & Footer
+   - [ ] Footer (mouna)
 
-2. **Recruiter Landing Page (hiba)**
+3. **Recruiter Landing Page (hiba)**
    - [ ] Header (ilham)
    - [ ] SubHeader
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
-   - [ ] Footer
+   - [ ] Footer(mouna)
 
-3. **Job Seeker Landing Page** (mouna)
+4. **Job Seeker Landing Page** (mouna)
    - [ ] Header (ilham)
    - [ ] SubHeader (hiba)
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
-   - [ ] Footer (hiba)
+   - [ ] Footer
 
 ---
 
