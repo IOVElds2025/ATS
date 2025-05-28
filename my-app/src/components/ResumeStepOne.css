@@ -1,295 +1,396 @@
-.resume-step-one {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  /* Upload Container */
-  .upload-container {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .upload-container h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-  
-  .drop-zone {
-    border: 2px dashed #ccc;
-    border-radius: 5px;
-    padding: 30px 20px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .drop-zone.dragging {
-    background-color: #f7f7f7;
-  }
-  
-  .upload-icon {
-    color: #f44336;
-    margin-bottom: 10px;
-  }
-  
-  .drop-text {
-    margin-bottom: 15px;
-    font-size: 15px;
-  }
-  
-  .browse-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .browse-btn:hover {
-    background-color: #e53935;
-  }
-  
-  .format-text {
-    font-size: 12px;
-    color: #777;
-  }
-  
-  /* Preview Section */
-  .preview-section {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .preview-section h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  .personal-info {
-    margin-bottom: 20px;
-  }
-  
-  .personal-info h3 {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 15px;
-  }
-  
-  .info-field {
-    margin-bottom: 15px;
-  }
-  
-  .info-field label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .required {
-    color: #f44336;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  /* Phone Input */
-  .phone-input-container {
-    display: flex;
-  }
-  
-  .country-code-select {
-    position: relative;
-    width: 100px;
-  }
-  
-  .country-code-dropdown {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    font-size: 14px;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #fff;
-  }
-  
-  .dropdown-arrow {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 10px;
-    color: #777;
-    pointer-events: none;
-  }
-  
-  .phone-input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
-    font-size: 14px;
-  }
-  
-  /* Job Title */
-  .job-title-container {
-    position: relative;
-  }
-  
-  .job-title-dropdown {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #fff;
-  }
-  
-  /* Action Buttons */
-  .action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  .continue-btn {
-    background-color: #2196f3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .continue-btn:hover {
-    background-color: #1e88e5;
-  }
-  
-  .continue-btn:disabled {
-    background-color: #bdbdbd;
-    cursor: not-allowed;
-  }
-  /* Add these CSS styles to your ResumeStepOne.css file */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* File Preview Styling */
+/* Main Container */
+.resume-step-one {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Upload Container */
+.upload-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.upload-container h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Drop Zone */
+.drop-zone {
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  background-color: #fafafa;
+}
+
+.drop-zone.dragging {
+  border-color: #f44336;
+  background-color: #fff5f5;
+}
+
+.upload-icon {
+  color: #f44336;
+  margin-bottom: 10px;
+}
+
+.drop-text {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+.browse-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.browse-btn:hover {
+  background-color: #e53935;
+}
+
+.format-text {
+  font-size: 11px;
+  color: #999;
+}
+
+/* File Preview */
 .file-preview {
-    border: 2px solid #e6e6e6;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .file-preview-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .file-preview-title {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    font-size: 16px;
-  }
-  
-  .file-success-icon {
-    margin-right: 8px;
-    color: #34c759;
-  }
-  
-  .remove-file-btn {
-    background: none;
-    border: none;
-    color: #888;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .remove-file-btn:hover {
-    background-color: #eee;
-    color: #333;
-  }
-  
-  .file-details {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 6px;
-    border: 1px solid #e6e6e6;
-  }
-  
-  .file-icon {
-    margin-right: 15px;
-    color: #4a6ee0;
-  }
-  
-  .file-info {
-    flex: 1;
-  }
-  
-  .file-name {
-    margin: 0 0 5px 0;
-    font-weight: 500;
-    font-size: 14px;
-    color: #333;
-    word-break: break-all;
-  }
-  
-  .file-size {
-    margin: 0;
-    font-size: 12px;
-    color: #888;
-  }
-  
-  .upload-success-message {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #d4edda;
-    border-radius: 4px;
-    color: #155724;
-    text-align: center;
-  }
-  
-  /* Existing styles should remain below *//* Add these styles to your existing ResumeStepOne.css file */
+  border: 2px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.file-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.file-preview-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.file-success-icon {
+  margin-right: 6px;
+  color: #4caf50;
+}
+
+.remove-file-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-file-btn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.file-details {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+}
+
+.file-icon {
+  margin-right: 12px;
+  color: #2196f3;
+}
+
+.file-info {
+  flex: 1;
+}
+
+.file-name {
+  margin: 0 0 4px 0;
+  font-weight: 500;
+  font-size: 13px;
+  color: #333;
+  word-break: break-all;
+}
+
+.file-size {
+  margin: 0;
+  font-size: 11px;
+  color: #888;
+}
+
+.upload-success-message {
+  margin-top: 12px;
+  padding: 8px;
+  background-color: #e8f5e8;
+  border-radius: 4px;
+  color: #2e7d32;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Personal Information Section */
+.personal-info-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.personal-info-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.personal-info-title h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.personal-info-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.required {
+  color: #f44336;
+}
+
+.info-input {
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.2s ease;
+  height: 38px;
+}
+
+.info-input:focus {
+  border-color: #f44336;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
+}
+
+.phone-input-container {
+  display: flex;
+  gap: 8px;
+}
+
+.country-code-dropdown {
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  outline: none;
+  width: 80px;
+  cursor: pointer;
+  height: 38px;
+}
+
+.phone-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  outline: none;
+  height: 38px;
+}
+
+/* Skills and Languages Sections */
+.skills-section,
+.languages-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.skills-section h3,
+.languages-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.skills-input-container,
+.languages-input-container {
+  margin-bottom: 12px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  height: 38px;
+}
+
+.input-field:focus {
+  border-color: #f44336;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
+}
+
+.skills-container,
+.languages-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #fafafa;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.skills-container.empty,
+.languages-container.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.skills-container.empty::after {
+  content: 'No skills added yet. Press Enter to add skills.';
+}
+
+.languages-container.empty::after {
+  content: 'No languages added yet. Press Enter to add languages.';
+}
+
+.skill-tag,
+.language-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.skill-tag:hover,
+.language-tag:hover {
+  background-color: #d32f2f;
+}
+
+.remove-tag-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.remove-tag-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
 /* Work Experience and Education Sections */
 .work-experience-section,
 .education-section {
-  margin-top: 30px;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .section-header {
@@ -312,11 +413,12 @@
   background-color: #f44336;
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 8px 12px;
-  font-size: 14px;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .add-button:hover {
@@ -324,23 +426,30 @@
 }
 
 .add-button span {
-  font-size: 18px;
-  margin-right: 5px;
+  font-size: 16px;
+  margin-right: 6px;
+  font-weight: normal;
 }
 
 .experience-item,
 .education-item {
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 18px;
+  margin-bottom: 15px;
   border: 1px solid #e0e0e0;
+}
+
+.experience-item:last-child,
+.education-item:last-child {
+  margin-bottom: 0;
 }
 
 /* Date Range Picker */
 .date-range-picker {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .date-picker {
@@ -350,11 +459,19 @@
 
 .date-input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 10px 35px 10px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
   cursor: pointer;
+  background-color: #fff;
+  outline: none;
+  height: 38px;
+}
+
+.date-input:focus {
+  border-color: #f44336;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
 }
 
 .calendar-button {
@@ -366,57 +483,78 @@
   border: none;
   cursor: pointer;
   color: #666;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-button:hover {
+  color: #f44336;
 }
 
 .to-text {
-  margin: 0 10px;
   color: #666;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .textarea-field {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
   resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.textarea-field:focus {
+  border-color: #f44336;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
 }
 
 .remove-item-btn {
   background-color: #f5f5f5;
   color: #666;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 8px 12px;
-  font-size: 14px;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 12px;
+  transition: all 0.2s ease;
 }
 
 .remove-item-btn:hover {
   background-color: #e0e0e0;
+  color: #333;
 }
 
-/* Calendar popup */
+/* Calendar Popup */
 .calendar-popup {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   width: 280px;
-  padding: 10px;
-  margin-top: 5px;
+  padding: 12px;
+  margin-top: 4px;
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  padding: 0 4px;
 }
 
 .calendar-header button {
@@ -425,20 +563,33 @@
   cursor: pointer;
   font-size: 16px;
   color: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-header button:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-header div {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
 }
 
 .calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  gap: 1px;
 }
 
 .calendar-day-header {
   text-align: center;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11px;
   color: #666;
-  padding: 5px 0;
+  padding: 6px 0;
 }
 
 .calendar-day {
@@ -446,9 +597,14 @@
   align-items: center;
   justify-content: center;
   height: 32px;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-day.active {
+  color: #333;
 }
 
 .calendar-day.active:hover {
@@ -463,23 +619,26 @@
 .calendar-footer {
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #e0e0e0;
 }
 
 .calendar-footer button {
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 5px 10px;
-  font-size: 14px;
+  padding: 6px 12px;
+  font-size: 12px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .calendar-footer button:hover {
   background-color: #e0e0e0;
 }
 
-/* Institution dropdown */
+/* Institution Dropdown */
 .institution-container {
   position: relative;
 }
@@ -487,195 +646,99 @@
 .institution-dropdown {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: transparent;
+  background: white url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") no-repeat right 8px center;
+  background-size: 14px;
   cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+  height: 38px;
 }
 
-/* Responsive adjustments */
+.institution-dropdown:focus {
+  border-color: #f44336;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.continue-btn {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.continue-btn:hover {
+  background-color: #1976d2;
+}
+
+.continue-btn:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .resume-step-one {
+    padding: 12px;
+  }
+  
+  .personal-info-container,
+  .skills-section,
+  .languages-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
   .date-range-picker {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 8px;
   }
   
   .to-text {
-    margin: 10px 0;
+    align-self: center;
   }
   
-  .date-picker {
+  .phone-input-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .country-code-dropdown {
     width: 100%;
   }
-}
-/* Skills and Languages Sections */
-.skills-section,
-.languages-section {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.skills-section h3,
-.languages-section h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.skills-input-container,
-.languages-input-container {
-  margin-bottom: 15px;
-}
-
-/* Tag styling */
-.skills-tags,
-.languages-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.skill-tag,
-.language-tag {
-  display: inline-flex;
-  align-items: center;
-  background-color: #f44336;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.remove-tag-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  color: white;
-  margin-left: 8px;
-  cursor: pointer;
-  padding: 0;
-}
-
-/* Input field for entering new skills/languages */
-.input-field {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  background-color: #f9f9f9;
-}
-.pdf-preview {
-  margin-top: 20px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  padding: 10px;
-  background: #fafafa;
-  text-align: center;
-}
-.docx-preview {
-  margin-top: 20px;
-  text-align: center;
-}
-
-/* Title: Preview Your Information */
-.section-title {
-  font-size: 28px; /* Increase font size */
-  font-weight: bold; /* Make it bold */
-  margin-bottom: 20px;
-  color: #000;
-}
-
-/* Subtitle: Personal Information */
-.personal-info-title {
-  font-size: 16px; /* Make it smaller */
-  font-weight: normal; /* Remove bold */
-  color: #000;
-  margin-top: 10px; /* Keep some spacing above */
-}
-
-/* Personal info container */
-.personal-info-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr; /* Title on the left, fields on the right */
-  gap: 20px;
-  align-items: start;
-}
-
-/* Input fields on the right */
-.personal-info-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* Info field container */
-.info-field {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Label styling */
-.info-label {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #000;
-}
-
-/* Input field styling */
-.info-input {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.info-input:focus {
-  border-color: #e74c3c;
-}
-
-/* Phone input container */
-.phone-input-container {
-  display: flex;
-  gap: 10px;
-}
-
-/* Country code dropdown */
-.country-code-dropdown {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  outline: none;
-  width: 80px;
-}
-
-/* Phone input */
-.phone-input {
-  flex: 1;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  outline: none;
-}
-
-/* Required field indicator */
-.required {
-  color: #e74c3c;
+  
+  .calendar-popup {
+    width: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .add-button {
+    align-self: flex-end;
+  }
 }
