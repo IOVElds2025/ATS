@@ -6,7 +6,9 @@
 
 ## 🚀 Landing Pages
 
-1. **Hive Landing Page (ilham)**
+
+
+1. **Hive Landing Page**
    - [ ] header
    - [ ] Layout & structure
    - [ ] Hero section
@@ -14,19 +16,19 @@
    - [ ] Features section
    - [ ] Our Team
    - [ ] Contact
-   - [ ] Footer (mouna)
+   - [ ] Footer
 
-3. **Recruiter Landing Page (hiba)**
-   - [ ] Header (ilham)
+3. **Recruiter Landing Page**
+   - [ ] Header 
    - [ ] SubHeader
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
-   - [ ] Footer(mouna)
+   - [ ] Footer 
 
-4. **Job Seeker Landing Page** (mouna)
-   - [ ] Header (ilham)
-   - [ ] SubHeader (hiba)
+4. **Job Seeker Landing Page** 
+   - [ ] Header 
+   - [ ] SubHeader 
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
@@ -36,11 +38,11 @@
 
 ## 📄 Pages
 
-### 🔐 Authentication (mouna)
+### 🔐 Authentication 
 - [ ] Login Page
 - [ ] Register Page
 
-### 📤 Upload Resume Flow (assia)
+### 📤 Upload Resume Flow 
 - [ ] Upload Resume - Preview
 - [ ] Upload Resume - Review
 - [ ] Upload Resume - Complete
@@ -49,16 +51,16 @@
 ---
 
 ### 🧑‍💼 Job Seeker
-- [ ] Dashboard
-- [ ] Profile
-- [ ] Find Job Page
-- [ ] Applications Page
+- [ ] Dashboard 
+- [ ] Profile 
+- [ ] Find Job Page 
+- [ ] Applications Page 
 - [ ] Settings
 
 ---
 
 ### 🧑‍💼 Recruiter
-- [ ] Expolre
+- [ ] Explore 
 - [ ] Dashboard
 - [ ] Profile
 - [ ] Your Job Posts Page
@@ -80,8 +82,8 @@
   - [ ] Validation  
 
 - [ ] `Loader` / Waiting State  
-- [ ] Dashboard Sidebar  
-- [ ] Dashboard Navbar  
+- [ ] Dashboard Sidebar
+- [ ] Dashboard Navbar
 - [ ] Profile Dropdown
 
 ---
@@ -91,7 +93,6 @@
 - [ ] Global styles (fonts, colors, spacing)
 - [ ] Responsive design (mobile/tablet/desktop)
 - [ ] Reusable design tokens
-- [ ] Dark mode (optional)
 
 ---
 
@@ -104,14 +105,86 @@
 
 ---
 
-## 📦 Deployment
 
-- [ ] Set up project (Vite/Next.js/React)
-- [ ] Folder structure & routing
-- [ ] Connect to backend API
-- [ ] Deploy to staging
+## 🧑‍💻 Team Members
+- **ilham** – Hive Landing Pages & Reusable Layout
+- **assia** – Authentication & Resume Flow
+- **mouna** – Job Seeker Dashboard & landing page
+- **hiba** – Recruiter Dashboard & landing page
 
 ---
+
+## 🔧 ilham – Landing Pages & Shared Layout
+**Responsibilities:**
+- [ ] Hive Landing Page
+- [ ] Explore
+- [ ] Shared Sections:
+  - [ ] Header
+  - [ ] SubHeader
+  - [ ] Footer
+- [ ] Components:
+  - [ ] Button (Primary, Secondary, Disabled)
+  - [ ] Loader / Waiting
+
+---
+
+
+
+## 🔧 assia – Auth & Resume Upload Flow
+**Responsibilities:**
+- [ ] Login Page
+- [ ] Register Page
+- [ ] Job Seeker Dashboard
+- [ ] Recruiter Dashboard
+- [ ] Upload Resume Flow:
+  - [ ] Preview
+  - [ ] Review
+  - [ ] Complete
+  - [ ] Welcome
+- [ ] Components:
+  - [ ] Dashboard Sidebar (Recruiter/Job Seeker)
+  - [ ] Dashboard Navbar (Recruiter/Job Seeker)
+  - [ ] Profile Dropdown
+- [ ] Input Field Component (label, placeholder, validation)
+- [ ] Form Validation & State Handling
+
+---
+
+## 🔧 mouna – Job Seeker Area
+**Responsibilities:**
+- [ ] Job Seeker Landing Page
+- [ ] Job Seeker Profile Page
+- [ ] Find Job Page
+- [ ] Applications Page
+- [ ] Job Seeker Settings Page
+- [ ] Shared Sections:
+   - [ ] Header (ilham)
+   - [ ] SubHeader (ilham)
+   - [ ] Footer (ilham)
+- [ ] Components:
+  - [ ] Dashboard Sidebar (Job Seeker)(assia)
+  - [ ] Dashboard Navbar (Job Seeker)(assia)
+
+---
+
+## 🔧 hiba – Recruiter Area & Interactions
+**Responsibilities:**
+- [ ] Recruiter Landing Page
+- [ ] Recruiter Profile Page
+- [ ] Your Job Posts Page
+- [ ] Candidates Page
+- [ ] Recruiter Settings Page
+- [ ] Shared Sections:
+   - [ ] Header (ilham)
+   - [ ] SubHeader (ilham)
+   - [ ] Footer (ilham)
+- [ ] Components:
+  - [ ] Dashboard Sidebar (Recruiter)(assia)
+  - [ ] Dashboard Navbar (Recruiter)(assia)
+- [ ] Accessibility & Responsive Testing
+
+---
+
 
 ## 📝 Notes
 
