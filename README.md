@@ -15,31 +15,31 @@
    - [ ] Contact
    - [ ] CTA & Footer
 
-2. **Recruiter Landing Page**
-   - [ ] Header
+2. **Recruiter Landing Page (hiba)**
+   - [ ] Header (ilham)
    - [ ] SubHeader
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
    - [ ] Footer
 
-3. **Job Seeker Landing Page**
-   - [ ] Header
-   - [ ] SubHeader
+3. **Job Seeker Landing Page** (mouna)
+   - [ ] Header (ilham)
+   - [ ] SubHeader (hiba)
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
-   - [ ] Footer
+   - [ ] Footer (hiba)
 
 ---
 
 ## 📄 Pages
 
-### 🔐 Authentication
+### 🔐 Authentication (mouna)
 - [ ] Login Page
 - [ ] Register Page
 
-### 📤 Upload Resume Flow
+### 📤 Upload Resume Flow (assia)
 - [ ] Upload Resume - Preview
 - [ ] Upload Resume - Review
 - [ ] Upload Resume - Complete
