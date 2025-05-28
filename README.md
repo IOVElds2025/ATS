@@ -9,7 +9,10 @@
 1. **Hive Landing Page**
    - [ ] Layout & structure
    - [ ] Hero section
+   - [ ] about us
    - [ ] Features section
+   - [ ] Our Team
+   - [ ] Contact
    - [ ] CTA & Footer
 
 2. **Recruiter Landing Page**
