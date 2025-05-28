@@ -1,3 +1,115 @@
-## README
-## 5tirner is here
-## rahmoun03 was here
+# ✅ Frontend To-Do List (Based on Figma Design)
+
+📌 **Figma Link**: [ATS](https://www.figma.com/design/mN8nGYXa9HNn1Yip4ttBLv/AI-Powered-ATS?node-id=0-1&t=4JUEvG0wDOPC7NWy-1)
+
+---
+
+## 🚀 Landing Pages
+
+1. **Hive Landing Page**
+   - [ ] Layout & structure
+   - [ ] Hero section
+   - [ ] Features section
+   - [ ] CTA & Footer
+
+2. **Recruiter Landing Page**
+   - [ ] Header
+   - [ ] SubHeader
+   - [ ] Hero Section
+   - [ ] How it Works Section
+   - [ ] Features Section
+   - [ ] Footer
+
+3. **Job Seeker Landing Page**
+   - [ ] Header
+   - [ ] SubHeader
+   - [ ] Hero Section
+   - [ ] How it Works Section
+   - [ ] Features Section
+   - [ ] Footer
+
+---
+
+## 📄 Pages
+
+### 🔐 Authentication
+- [ ] Login Page
+- [ ] Register Page
+
+### 📤 Upload Resume Flow
+- [ ] Upload Resume - Preview
+- [ ] Upload Resume - Review
+- [ ] Upload Resume - Complete
+- [ ] Upload Resume - Welcome
+
+---
+
+### 🧑‍💼 Job Seeker
+- [ ] Dashboard
+- [ ] Profile
+- [ ] Find Job Page
+- [ ] Applications Page
+- [ ] Settings
+
+---
+
+### 🧑‍💼 Recruiter
+- [ ] Dashboard
+- [ ] Profile
+- [ ] Your Job Posts Page
+- [ ] Candidates Page
+- [ ] Settings
+
+---
+
+## 🧩 Components
+
+- [ ] `Button` Component  
+  - [ ] Primary  
+  - [ ] Secondary  
+  - [ ] Disabled  
+
+- [ ] `Input Field`  
+  - [ ] Label  
+  - [ ] Placeholder  
+  - [ ] Validation  
+
+- [ ] `Loader` / Waiting State  
+- [ ] Dashboard Sidebar  
+- [ ] Dashboard Navbar  
+- [ ] Profile Dropdown
+
+---
+
+## 🎨 Styling
+
+- [ ] Global styles (fonts, colors, spacing)
+- [ ] Responsive design (mobile/tablet/desktop)
+- [ ] Reusable design tokens
+- [ ] Dark mode (optional)
+
+---
+
+## 🧪 Testing
+
+- [ ] Component snapshot tests
+- [ ] Form validation tests
+- [ ] Mobile responsiveness testing
+- [ ] Accessibility checks
+
+---
+
+## 📦 Deployment
+
+- [ ] Set up project (Vite/Next.js/React)
+- [ ] Folder structure & routing
+- [ ] Connect to backend API
+- [ ] Deploy to staging
+
+---
+
+## 📝 Notes
+
+- Use `@username` in PRs for reviews or help
+- Keep this list updated after each sprint
+- Blocked tasks should be explained in comments or issues
