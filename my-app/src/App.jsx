@@ -1,18 +1,10 @@
-import { Routes, Route, Link } from 'react-router-dom';
 import Register from './pages/register';
-import Login from './pages/login';
-import UploadResumePage from './pages/UploadResumePage';
+import './index.css';
+import Explore from './pages/Explore';
+
 
 function App() {
-  return (
-    <div>
-        <Routes>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/UploadResume" element={<UploadResumePage />} />
-        </Routes>
-    </div>
-  );
+  return <Explore />;
 }
 
 export default App;
