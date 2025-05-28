@@ -1,0 +1,311 @@
+import React, { useEffect, useRef, useState } from 'react';
+import './Recruiter.css';
+import FinalCarousel from './FinalCarousel';
+import { Link, useNavigate } from 'react-router-dom';
+import Header from './Header';
+import recruitingVideo from './recruiting-video.mp4';
+import Footer from './Footer';
+
+
+const Recruiter = () => {
+  const [progress, setProgress] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [backgroundVideo, setBackgroundVideo] = useState(null);
+  const [currentFeature, setCurrentFeature] = useState(0);
+  const timelineRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const [visibleSteps, setVisibleSteps] = useState(new Set());
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const imagePaths = {
+    heroPattern: '/images/hero-pattern.jpg',
+    decorationStar: '/images/decoration-star.png',
+    decorationFlower: '/images/decoration-flower.png',
+    heroImage: '/images/hero-image.jpg',
+    timeline1: '/images/timeline-1.jpg',
+    timeline2: '/images/timeline-2.jpg',
+    timeline3: '/images/timeline-3.jpg',
+    featureBackground: '/images/feature-background.png'
+  };
+
+  const features = [
+    {
+      icon: '⏱️',
+      title: 'Faster Time-to-Hire',
+      description: 'Cut your hiring time by up to 40% with streamlined processes. Quick candidate sourcing, automated screening, and integrated tools reduce delays between application and offer.',
+      iconClass: 'icon-green'
+    },
+    {
+      icon: '📊',
+      title: 'Insights & Analytics',
+      description: 'Make data-driven hiring decisions with comprehensive metrics. Track hiring pipeline performance, identify areas of improvement, and measure your overall performance in real-time.',
+      iconClass: 'icon-purple'
+    },
+    {
+      icon: '🔍',
+      title: 'Smart Candidate Matching',
+      description: 'Our AI-powered system analyzes thousands of profiles to find the perfect match for your role. We surface only qualified candidates who meet your specific criteria.',
+      iconClass: 'icon-blue'
+    }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (timelineRef.current) {
+        const timeline = timelineRef.current;
+        const stepsContainer = timeline.querySelector('.timeline-container');
+        if (stepsContainer) {
+          const containerRect = stepsContainer.getBoundingClientRect();
+          const containerHeight = containerRect.height;
+          const windowHeight = window.innerHeight;
+
+          // Calculate progress
+          if (containerRect.top < windowHeight) {
+            const progressValue = Math.min(
+              Math.max(0, (windowHeight - containerRect.top) / (containerHeight + windowHeight * 0.5)),
+              1
+            );
+            setProgress(progressValue);
+            
+            // Update active step based on progress
+            if (progressValue < 0.33) setActiveStep(0);
+            else if (progressValue < 0.66) setActiveStep(1);
+            else setActiveStep(2);
+
+            // Check each step's visibility
+            const steps = timeline.querySelectorAll('.timeline-step');
+            steps.forEach((step, index) => {
+              const stepRect = step.getBoundingClientRect();
+              const isVisible = stepRect.top < windowHeight - 100 && stepRect.bottom > 100;
+
+              if (isVisible) {
+                setVisibleSteps(prev => new Set([...prev, index]));
+                step.classList.add('visible');
+              } else {
+                step.classList.remove('visible');
+                setVisibleSteps(prev => {
+                  const newSet = new Set(prev);
+                  newSet.delete(index);
+                  return newSet;
+                });
+              }
+
+              // Add active class based on progress
+              if (index === activeStep) {
+                step.classList.add('active');
+              } else {
+                step.classList.remove('active');
+              }
+            });
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    const carouselInterval = setInterval(() => {
+      setCurrentFeature((prev) => (prev + 1) % features.length);
+    }, 5000);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(carouselInterval);
+    };
+  }, [activeStep, features.length]);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('video/')) {
+      const videoUrl = URL.createObjectURL(file);
+      setBackgroundVideo(videoUrl);
+    } else {
+      alert('Please select a valid video file.');
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (backgroundVideo && backgroundVideo.startsWith('blob:')) {
+        URL.revokeObjectURL(backgroundVideo);
+      }
+    };
+  }, [backgroundVideo]);
+
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
+
+  return (
+    <div>
+      <Header />
+      <section className="hero-section relative">
+        <video 
+          className="absolute inset-0 w-full h-full object-cover z-0" 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          style={{ opacity: 0.6 }}
+        >
+          <source src={backgroundVideo || recruitingVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="hero-decoration hero-decoration-top-left" style={{
+          position: 'absolute',
+          top: '4%',
+          left: '5%',
+          width: '120px',
+          height: '120px',
+          backgroundImage: `url(${imagePaths.decorationStar})`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}></div>
+        <div className="hero-decoration hero-decoration-bottom-right" style={{
+          position: 'absolute',
+          bottom: '4%',
+          right: '5%',
+          width: '150px',
+          height: '150px',
+          backgroundImage: `url(${imagePaths.decorationFlower})`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}></div>
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1 className="hero-heading">Post jobs and find the perfect candidate in minutes</h1>
+            <p className="hero-description">AI connects new talents and candidates with the right opportunities, instantly.</p>
+            <div className="hero-cta">
+              <p className="hero-cta-text">Find the right Talent with AI</p>
+              <button 
+                onClick={() => navigate('/explore')} 
+                className="explore-button"
+              >
+                Explore
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              onChange={handleFileChange} 
+              style={{ display: 'none' }} 
+              accept="video/*" 
+            />
+          </div>
+          <div className="hero-image">
+            <img 
+              src={imagePaths.heroImage}
+              alt="Business professional with laptop" 
+              style={{
+                background: 'none',
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                border: 'none',
+                borderRadius: '0'
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section ref={timelineRef} className="timeline-section">
+        <div className="animated-background">
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+          <div className="floating-hex"></div>
+        </div>
+        <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>Smart Hiring Process</h2>
+        <p className="section-subtitle" style={{ marginTop: '0' }}>Experience a streamlined recruitment journey powered by AI</p>
+        
+        <div className="timeline-container">
+          <div className="timeline-line"></div>
+          <div className="timeline-progress" style={{ height: `${progress * 100}%` }}></div>
+          
+          <div className="timeline-step">
+            <div className="timeline-image">
+              <img src={imagePaths.timeline1} alt="Post & Configure" />
+            </div>
+            <div className="timeline-dot"></div>
+            <div className="timeline-content">
+              <div className="step-number">01</div>
+              <h3 className="step-title">Post & Configure</h3>
+              <p className="step-description">Create detailed job listings with AI-assisted role configuration. Our system helps you define the perfect candidate profile.</p>
+            </div>
+          </div>
+          
+          <div className="timeline-step">
+            <div className="timeline-content">
+              <div className="step-number">02</div>
+              <h3 className="step-title">AI Matching</h3>
+              <p className="step-description">Our advanced AI algorithms analyze thousands of profiles in real-time, ensuring the perfect match for your requirements.</p>
+            </div>
+            <div className="timeline-dot"></div>
+            <div className="timeline-image">
+              <img src={imagePaths.timeline2} alt="AI Matching Process" />
+            </div>
+          </div>
+          
+          <div className="timeline-step">
+            <div className="timeline-image">
+              <img src={imagePaths.timeline3} alt="Smart Interview Process" />
+            </div>
+            <div className="timeline-dot"></div>
+            <div className="timeline-content">
+              <div className="step-number">03</div>
+              <h3 className="step-title">Smart Interview</h3>
+              <p className="step-description">Conduct AI-assisted interviews with integrated assessment tools. Make data-driven hiring decisions with confidence.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section 
+        className="features-section" 
+        // style={{ 
+        //   backgroundImage: `url(${imagePaths.featureBackground})`,
+        //   opacity: 0.2
+        // }}
+      >
+        <div style={{
+          backgroundImage: `url(${imagePaths.featureBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          position: 'absolute',
+          zIndex: 1,
+          width: '100%',
+          height: '100%',
+          opacity: 0.2
+          }}> </div>
+<h2 className="section-title" style={{ marginTop: '2rem', marginBottom: '2rem' }}>Key Features</h2>
+<div className="features-container" style={{ padding: '2rem 1rem 6rem 1rem' }}>
+          <FinalCarousel features={features} currentFeature={currentFeature} setCurrentFeature={setCurrentFeature} />
+        </div>
+      </section>
+      
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default Recruiter;

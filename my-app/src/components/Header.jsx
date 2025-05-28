@@ -1,12 +1,32 @@
-export default function Header() {
-    return (
-      <header className="absolute top-0 left-0 w-full z-10 flex justify-between items-center px-6 py-4 bg-transparent text-white">
-        <h1 className="text-2xl font-bold">YourCompany</h1>
-        <nav className="space-x-6">
-          <a href="/" className="hover:underline">Home</a>
-          <a href="/Login" className="hover:underline">Login</a>
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
+
+const Header = () => {
+  return (
+    <header className="header-container">
+      <div className="header-content">
+        <div className="header-left">
+          <Link to="/" className="logo">
+            SmartHire
+          </Link>
+        </div>
+        <nav className="header-nav">
+          <ul>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/about">About us</Link></li>
+            <li><Link to="/career">Career</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
         </nav>
-      </header>
-    );
-  }
-  
+        <div className="header-right">
+          <Link to="/login" className="login-button">
+            Login
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
