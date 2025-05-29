@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 const images = [
@@ -8,6 +9,7 @@ const images = [
 ];
 
 const Login = () => {
+  const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
@@ -30,6 +32,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
+    console.log('Login attempt started');
 
     const { email, password } = formData;
     if (!email || !password) {
@@ -37,6 +40,7 @@ const Login = () => {
     }
 
     try {
+      console.log('Sending request to server...');
       const res = await fetch('http://192.168.100.39:8000/api/auth/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -44,16 +48,36 @@ const Login = () => {
       });
 
       const data = await res.json();
+      console.log('Server response:', data);
 
       if (res.ok) {
+        console.log('Login successful, setting states...');
         setLoginSuccess(true);
-        console.log('Login successful:', data);
+        
+        // Store auth token and user data
+        if (data.token) {
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('userData', JSON.stringify({
+            email: data.email,
+            firstName: data.first_name,
+            lastName: data.last_name,
+            role: data.is_recruiter ? 'recruiter' : 'jobseeker'
+          }));
+          console.log('Auth token and user data stored');
+          
+          // Navigate immediately instead of setTimeout
+          navigate('/client-dashboard');
+        } else {
+          console.error('No token received from server');
+          setMessage('Login successful but no token received. Please try again.');
+        }
       } else {
+        console.error('Login failed:', data);
         setMessage(data.detail || 'Invalid email or password.');
       }
     } catch (error) {
       console.error('Login error:', error);
-      setMessage('Failed to connect to the server.');
+      setMessage('Failed to connect to the server. Please check your internet connection.');
     }
   };
 
@@ -141,7 +165,7 @@ const Login = () => {
               <button type="submit" className="submit-btn">login</button>
               {message && <p className="form-message">{message}</p>}
               <p className="signin-text">
-                Don’t have an account ? <span className="signin-link">sign up</span>
+                Don't have an account ? <span className="signin-link">sign up</span>
               </p>
             </form>
           </>

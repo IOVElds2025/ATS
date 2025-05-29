@@ -67,10 +67,10 @@ const Header = () => {
         isScrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between h-12">
         <a
           href="/"
-          className={`text-2xl tracking-wide flex items-center transition-colors duration-300 font-[Audiowide] ${
+          className={`text-xl tracking-wide flex items-center transition-colors duration-300 font-[Audiowide] ${
             isScrolled ? "text-gray-900" : "text-white"
           }`}
         >

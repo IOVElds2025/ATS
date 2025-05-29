@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import slide1 from '../assets/charachters/slide1.png';
 import slide2 from '../assets/charachters/slide2.png';
 import slide3 from '../assets/charachters/slide3.png';
@@ -8,6 +9,7 @@ import honeycomb from '../assets/charachters/honeycomb.jpg';
 const images = [slide1, slide2, slide3];
 
 const Register = () => {
+  const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -71,6 +73,16 @@ const Register = () => {
 
       if (res.status === 201) {
         setRegistrationSuccess(true);
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('userData', JSON.stringify({
+          email: data.email,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          role: formData.role
+        }));
+        setTimeout(() => {
+          navigate('/client-dashboard');
+        }, 1500);
       } else if (res.status === 400 && data) {
         const errors = [];
         for (const key in data) {
@@ -211,7 +223,7 @@ const Register = () => {
         )}
       </div>
 
-      {/* Section droite : carrousel d’images */}
+      {/* Section droite : carrousel d'images */}
       <div
         className="hidden lg:flex lg:w-1/2 relative justify-center items-center z-10 overflow-hidden bg-cover bg-center"
         style={{ backgroundImage: `url(${honeycomb})` }}

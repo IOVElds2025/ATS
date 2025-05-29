@@ -190,22 +190,15 @@ const Recruiter = () => {
             <div className="hero-cta">
               <p className="hero-cta-text">Find the right Talent with AI</p>
               <button 
-                onClick={() => navigate('/explore')} 
                 className="explore-button"
+                onClick={() => navigate('/explore')}
               >
-                Explore
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-5 w-5" 
-                  viewBox="0 0 20 20" 
-                  fill="currentColor"
-                >
-                  <path 
-                    fillRule="evenodd" 
-                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
-                    clipRule="evenodd" 
-                  />
-                </svg>
+                <span>
+                  Explore
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                  </svg>
+                </span>
               </button>
             </div>
             <input 
