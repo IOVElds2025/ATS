@@ -90,7 +90,6 @@
 - [ ] Global styles (fonts, colors, spacing)
 - [ ] Responsive design (mobile/tablet/desktop)
 - [ ] Reusable design tokens
-- [ ] Dark mode (optional)
 
 ---
 
@@ -102,13 +101,69 @@
 - [ ] Accessibility checks
 
 ---
+## 🧑‍💻 Team Members
+- **Dev A** – Landing Pages & Reusable Layout
+- **Dev B** – Authentication & Resume Flow
+- **Dev C** – Job Seeker Dashboard
+- **Dev D** – Recruiter Dashboard & Advanced Components
 
-## 📦 Deployment
+---
 
-- [ ] Set up project (Vite/Next.js/React)
-- [ ] Folder structure & routing
-- [ ] Connect to backend API
-- [ ] Deploy to staging
+## 🔧 Developer A – Landing Pages & Shared Layout
+**Responsibilities:**
+- [ ] Hive Landing Page
+- [ ] Recruiter Landing Page
+- [ ] Job Seeker Landing Page
+- [ ] Shared Sections:
+  - [ ] Header
+  - [ ] SubHeader
+  - [ ] Footer
+- [ ] Components:
+  - [ ] Button (Primary, Secondary, Disabled)
+  - [ ] Loader / Waiting
+- [ ] Design Tokens (colors, typography, spacing)
+
+---
+
+## 🔧 Developer B – Auth & Resume Upload Flow
+**Responsibilities:**
+- [ ] Login Page
+- [ ] Register Page
+- [ ] Upload Resume Flow:
+  - [ ] Preview
+  - [ ] Review
+  - [ ] Complete
+  - [ ] Welcome
+- [ ] Input Field Component (label, placeholder, validation)
+- [ ] Form Validation & State Handling
+
+---
+
+## 🔧 Developer C – Job Seeker Area
+**Responsibilities:**
+- [ ] Job Seeker Dashboard
+- [ ] Job Seeker Profile Page
+- [ ] Find Job Page
+- [ ] Applications Page
+- [ ] Job Seeker Settings Page
+- [ ] Components:
+  - [ ] Dashboard Sidebar (Job Seeker)
+  - [ ] Dashboard Navbar (Job Seeker)
+
+---
+
+## 🔧 Developer D – Recruiter Area & Interactions
+**Responsibilities:**
+- [ ] Recruiter Dashboard
+- [ ] Recruiter Profile Page
+- [ ] Your Job Posts Page
+- [ ] Candidates Page
+- [ ] Recruiter Settings Page
+- [ ] Components:
+  - [ ] Dashboard Sidebar (Recruiter)
+  - [ ] Dashboard Navbar (Recruiter)
+  - [ ] Profile Dropdown
+- [ ] Accessibility & Responsive Testing
 
 ---
 
