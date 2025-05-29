@@ -486,13 +486,15 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
           {/* Input fields on the right */}
           <div className="md:w-3/4 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Full Name <span className="text-red-500">*</span></label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Full Name <span className="text-red-500">*</span>
+              </label>
               <input
                 type="text"
                 name="fullName"
                 value={formData.personalInfo.fullName}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
@@ -504,7 +506,7 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                 name="email"
                 value={formData.personalInfo.email}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
@@ -516,7 +518,7 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                   name="countryCode"
                   value={formData.personalInfo.countryCode}
                   onChange={handleCountryCodeChange}
-                  className="w-24 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="w-24 px-3 py-2 border border-gray-300 rounded-l-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
                   {countryCodes.map((country) => (
                     <option key={country.code} value={country.code}>
@@ -529,7 +531,7 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                   name="phone"
                   value={formData.personalInfo.phone}
                   onChange={handleInputChange}
-                  className="flex-1 px-3 py-2 border-t border-b border-r border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-r-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                   required
                 />
               </div>
@@ -553,12 +555,14 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                 name="jobTitle"
                 value={formData.personalInfo.jobTitle}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               >
                 <option value="" disabled>Select job title</option>
                 {jobTitles.map((job) => (
-                  <option key={job} value={job}>{job}</option>
+                  <option key={job} value={job}>
+                    {job}
+                  </option>
                 ))}
               </select>
             </div>
