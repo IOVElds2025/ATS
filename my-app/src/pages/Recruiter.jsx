@@ -149,12 +149,12 @@ const Recruiter = () => {
   };
 
   return (
-    <div className="recruiter-page">
+    <div className="bg-amber-950 recruiter-page">
       <Header />
       <SubHeader />
       
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="border border-amber-500 hero-section">
         <div 
           className="video-overlay" 
           style={{ 
