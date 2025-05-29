@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ResumeStepOne from "../components/ResumeStepOne";
 import ResumeStepTwo from "../components/ResumeStepTwo";
 import ResumeStepThree from "../components/ResumeStepThree";
 
 const UploadResumePage = () => {
   const [currentStep, setCurrentStep] = useState(1);
+
+  useEffect(() => {
+    // Force overflow-x-hidden on <body> and <html> even if you don't use index.css
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflowX = 'hidden';
+  }, []);
 
   const getInitialResumeData = () => ({
     file: null,
@@ -16,39 +22,8 @@ const UploadResumePage = () => {
       location: '',
       jobTitle: ''
     },
-    workExperience: [
-      {
-        jobTitle: 'Senior Software Engineer',
-        company: 'Laedx Digital Solution',
-        startDate: 'Dec 2024',
-        endDate: 'Present',
-        responsibilities: [
-          'Led development of cloud-based applications using React, Node.js, and AWS',
-          'Mentored junior developers and conducted code reviews',
-          'Implemented CI/CD pipelines reducing deployment time by 40%',
-          'Collaborated with cross-functional teams to deliver projects on schedule'
-        ]
-      },
-      {
-        jobTitle: 'Software Engineer',
-        company: 'Digital Innovations Ltd.',
-        startDate: 'Jun 2017',
-        endDate: 'Dec 2019',
-        responsibilities: [
-          'Developed and maintained web applications using JavaScript and Python',
-          'Optimized database queries resulting in 30% faster load times',
-          'Participated in agile development processes and sprint planning'
-        ]
-      }
-    ],
-    education: [
-      {
-        degree: 'Bachelor of Computer Science',
-        institution: 'University of Technology',
-        startDate: 'Sep 2013',
-        endDate: 'Jun 2017'
-      }
-    ],
+    workExperience: [],
+    education: [],
     skills: ['React.js', 'HTML', 'Tailwindcss', 'JavaScript', 'Python', 'Docker', 'Deployments', 'Leadership'],
     languages: ['Arabic', 'English', 'French']
   });
@@ -66,16 +41,11 @@ const UploadResumePage = () => {
     setResumeData(prev => {
       const updated = { ...prev };
       Object.keys(newData).forEach(key => {
-        if (key === 'personalInfo' && newData.personalInfo) {
+        if (key === 'personalInfo') {
           updated.personalInfo = { ...prev.personalInfo, ...newData.personalInfo };
-          if (newData.personalInfo.fullName && 
-              (!newData.personalInfo.firstName || !newData.personalInfo.lastName)) {
-            const nameParts = newData.personalInfo.fullName.split(' ');
-            updated.personalInfo.firstName = nameParts[0] || '';
-            updated.personalInfo.lastName = nameParts.slice(1).join(' ') || '';
-          }
-        } else if (Array.isArray(newData[key])) {
-          updated[key] = newData[key];
+          const parts = newData.personalInfo.fullName.split(' ');
+          updated.personalInfo.firstName = parts[0] || '';
+          updated.personalInfo.lastName = parts.slice(1).join(' ') || '';
         } else {
           updated[key] = newData[key];
         }
@@ -90,69 +60,66 @@ const UploadResumePage = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-5 bg-white rounded-lg">
-      <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Upload Resume Page</h1>
+    <div className="w-screen min-h-screen overflow-x-hidden bg-white">
+      <div className="flex flex-col items-center max-w-7xl mx-auto px-4 py-10">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">Upload Resume Page</h1>
 
-      {/* Progress Steps */}
-      <div className="flex flex-col md:flex-row items-center justify-between max-w-2xl mx-auto mt-5 mb-6 px-8 relative z-10 space-y-4 md:space-y-0">
-        <div className="flex flex-col items-center text-center relative z-20">
-          <div className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold transition-all border-2 ${
-            currentStep >= 1 ? 'bg-[#16204d] text-white border-[#16204d] shadow-md' : 'bg-gray-200 text-gray-500 border-transparent'
-          }`}>
-            1
-          </div>
-          <div className="text-sm font-medium text-[#16204d] mt-2">Upload Resume</div>
+        {/* Progress Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-3xl mb-12 space-y-6 md:space-y-0">
+          {[1, 2, 3].map((step, index) => (
+            <React.Fragment key={step}>
+              {index !== 0 && (
+                <div
+                  className={`hidden md:block flex-1 h-1 mx-4 ${
+                    currentStep >= step ? 'bg-[#16204d]' : 'bg-gray-300'
+                  }`}
+                />
+              )}
+              <div className="flex flex-col items-center">
+                <div
+                  className={`w-10 h-10 flex items-center justify-center rounded-full font-semibold border-2 transition ${
+                    currentStep >= step
+                      ? 'bg-[#16204d] text-white border-[#16204d]'
+                      : 'bg-gray-200 text-gray-500 border-transparent'
+                  }`}
+                >
+                  {step}
+                </div>
+                <span className="text-sm font-medium text-[#16204d] mt-2">
+                  {step === 1 ? 'Upload Resume' : step === 2 ? 'Review Info' : 'Complete Profile'}
+                </span>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
 
-        <div className={`hidden md:block flex-1 h-1 mx-5 transition-all ${currentStep > 1 ? 'bg-[#16204d]' : 'bg-gray-200'}`}></div>
-
-        <div className="flex flex-col items-center text-center relative z-20">
-          <div className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold transition-all border-2 ${
-            currentStep >= 2 ? 'bg-[#16204d] text-white border-[#16204d] shadow-md' : 'bg-gray-200 text-gray-500 border-transparent'
-          }`}>
-            2
-          </div>
-          <div className="text-sm font-medium text-[#16204d] mt-2">Review Info</div>
+        {/* Step Content */}
+        <div className="w-full max-w-4xl bg-white p-6 rounded-lg shadow-md">
+          {currentStep === 1 && (
+            <ResumeStepOne
+              resumeData={resumeData}
+              updateResumeData={updateResumeData}
+              onFileUpload={handleFileUpload}
+              onNext={handleNextStep}
+            />
+          )}
+          {currentStep === 2 && (
+            <ResumeStepTwo
+              resumeData={resumeData}
+              updateResumeData={updateResumeData}
+              onNext={handleNextStep}
+              onPrev={handlePrevStep}
+            />
+          )}
+          {currentStep === 3 && (
+            <ResumeStepThree
+              resumeData={resumeData}
+              updateResumeData={updateResumeData}
+              onPrev={handlePrevStep}
+              onComplete={handleComplete}
+            />
+          )}
         </div>
-
-        <div className={`hidden md:block flex-1 h-1 mx-5 transition-all ${currentStep > 2 ? 'bg-[#16204d]' : 'bg-gray-200'}`}></div>
-
-        <div className="flex flex-col items-center text-center relative z-20">
-          <div className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold transition-all border-2 ${
-            currentStep >= 3 ? 'bg-[#16204d] text-white border-[#16204d] shadow-md' : 'bg-gray-200 text-gray-500 border-transparent'
-          }`}>
-            3
-          </div>
-          <div className="text-sm font-medium text-[#16204d] mt-2">Complete Profile</div>
-        </div>
-      </div>
-
-      {/* Step Content */}
-      <div className="bg-white rounded-md max-w-4xl mx-auto shadow-none py-8 relative z-10">
-        {currentStep === 1 && (
-          <ResumeStepOne
-            resumeData={resumeData}
-            updateResumeData={updateResumeData}
-            onFileUpload={handleFileUpload}
-            onNext={handleNextStep}
-          />
-        )}
-        {currentStep === 2 && (
-          <ResumeStepTwo
-            resumeData={resumeData}
-            updateResumeData={updateResumeData}
-            onNext={handleNextStep}
-            onPrev={handlePrevStep}
-          />
-        )}
-        {currentStep === 3 && (
-          <ResumeStepThree
-            resumeData={resumeData}
-            updateResumeData={updateResumeData}
-            onPrev={handlePrevStep}
-            onComplete={handleComplete}
-          />
-        )}
       </div>
     </div>
   );

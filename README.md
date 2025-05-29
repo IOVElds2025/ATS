@@ -104,6 +104,11 @@
 - [ ] Accessibility checks
 
 ---
+## 🧑‍💻 Team Members
+- **Dev A** – Landing Pages & Reusable Layout
+- **Dev B** – Authentication & Resume Flow
+- **Dev C** – Job Seeker Dashboard
+- **Dev D** – Recruiter Dashboard & Advanced Components
 
 
 ## 🧑‍💻 Team Members
