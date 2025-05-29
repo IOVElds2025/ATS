@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import "fontsource/audiowide";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
