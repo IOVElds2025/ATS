@@ -6,26 +6,29 @@
 
 ## 🚀 Landing Pages
 
+
+
 1. **Hive Landing Page**
+   - [ ] header
    - [ ] Layout & structure
    - [ ] Hero section
    - [ ] about us
    - [ ] Features section
    - [ ] Our Team
    - [ ] Contact
-   - [ ] CTA & Footer
+   - [ ] Footer
 
-2. **Recruiter Landing Page**
-   - [ ] Header
+3. **Recruiter Landing Page**
+   - [ ] Header 
    - [ ] SubHeader
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
-   - [ ] Footer
+   - [ ] Footer 
 
-3. **Job Seeker Landing Page**
-   - [ ] Header
-   - [ ] SubHeader
+4. **Job Seeker Landing Page** 
+   - [ ] Header 
+   - [ ] SubHeader 
    - [ ] Hero Section
    - [ ] How it Works Section
    - [ ] Features Section
@@ -35,11 +38,11 @@
 
 ## 📄 Pages
 
-### 🔐 Authentication
+### 🔐 Authentication 
 - [ ] Login Page
 - [ ] Register Page
 
-### 📤 Upload Resume Flow
+### 📤 Upload Resume Flow 
 - [ ] Upload Resume - Preview
 - [ ] Upload Resume - Review
 - [ ] Upload Resume - Complete
@@ -48,16 +51,16 @@
 ---
 
 ### 🧑‍💼 Job Seeker
-- [ ] Dashboard
-- [ ] Profile
-- [ ] Find Job Page
-- [ ] Applications Page
+- [ ] Dashboard 
+- [ ] Profile 
+- [ ] Find Job Page 
+- [ ] Applications Page 
 - [ ] Settings
 
 ---
 
 ### 🧑‍💼 Recruiter
-- [ ] Expolre
+- [ ] Explore 
 - [ ] Dashboard
 - [ ] Profile
 - [ ] Your Job Posts Page
@@ -79,8 +82,8 @@
   - [ ] Validation  
 
 - [ ] `Loader` / Waiting State  
-- [ ] Dashboard Sidebar  
-- [ ] Dashboard Navbar  
+- [ ] Dashboard Sidebar
+- [ ] Dashboard Navbar
 - [ ] Profile Dropdown
 
 ---
@@ -107,13 +110,19 @@
 - **Dev C** – Job Seeker Dashboard
 - **Dev D** – Recruiter Dashboard & Advanced Components
 
+
+## 🧑‍💻 Team Members
+- **ilham** – Hive Landing Pages & Reusable Layout
+- **assia** – Authentication & Resume Flow
+- **mouna** – Job Seeker Dashboard & landing page
+- **hiba** – Recruiter Dashboard & landing page
+
 ---
 
-## 🔧 Developer A – Landing Pages & Shared Layout
+## 🔧 ilham – Landing Pages & Shared Layout
 **Responsibilities:**
 - [ ] Hive Landing Page
-- [ ] Recruiter Landing Page
-- [ ] Job Seeker Landing Page
+- [ ] Explore
 - [ ] Shared Sections:
   - [ ] Header
   - [ ] SubHeader
@@ -121,51 +130,66 @@
 - [ ] Components:
   - [ ] Button (Primary, Secondary, Disabled)
   - [ ] Loader / Waiting
-- [ ] Design Tokens (colors, typography, spacing)
 
 ---
 
-## 🔧 Developer B – Auth & Resume Upload Flow
+
+
+## 🔧 assia – Auth & Resume Upload Flow
 **Responsibilities:**
 - [ ] Login Page
 - [ ] Register Page
+- [ ] Job Seeker Dashboard
+- [ ] Recruiter Dashboard
 - [ ] Upload Resume Flow:
   - [ ] Preview
   - [ ] Review
   - [ ] Complete
   - [ ] Welcome
+- [ ] Components:
+  - [ ] Dashboard Sidebar (Recruiter/Job Seeker)
+  - [ ] Dashboard Navbar (Recruiter/Job Seeker)
+  - [ ] Profile Dropdown
 - [ ] Input Field Component (label, placeholder, validation)
 - [ ] Form Validation & State Handling
 
 ---
 
-## 🔧 Developer C – Job Seeker Area
+## 🔧 mouna – Job Seeker Area
 **Responsibilities:**
-- [ ] Job Seeker Dashboard
+- [ ] Job Seeker Landing Page
 - [ ] Job Seeker Profile Page
 - [ ] Find Job Page
 - [ ] Applications Page
 - [ ] Job Seeker Settings Page
+- [ ] Shared Sections:
+   - [ ] Header (ilham)
+   - [ ] SubHeader (ilham)
+   - [ ] Footer (ilham)
 - [ ] Components:
-  - [ ] Dashboard Sidebar (Job Seeker)
-  - [ ] Dashboard Navbar (Job Seeker)
+  - [ ] Dashboard Sidebar (Job Seeker)(assia)
+  - [ ] Dashboard Navbar (Job Seeker)(assia)
 
 ---
 
-## 🔧 Developer D – Recruiter Area & Interactions
+## 🔧 hiba – Recruiter Area & Interactions
 **Responsibilities:**
-- [ ] Recruiter Dashboard
+- [ ] Recruiter Landing Page
 - [ ] Recruiter Profile Page
 - [ ] Your Job Posts Page
 - [ ] Candidates Page
 - [ ] Recruiter Settings Page
+- [ ] Shared Sections:
+   - [ ] Header (ilham)
+   - [ ] SubHeader (ilham)
+   - [ ] Footer (ilham)
 - [ ] Components:
-  - [ ] Dashboard Sidebar (Recruiter)
-  - [ ] Dashboard Navbar (Recruiter)
-  - [ ] Profile Dropdown
+  - [ ] Dashboard Sidebar (Recruiter)(assia)
+  - [ ] Dashboard Navbar (Recruiter)(assia)
 - [ ] Accessibility & Responsive Testing
 
 ---
+
 
 ## 📝 Notes
 
