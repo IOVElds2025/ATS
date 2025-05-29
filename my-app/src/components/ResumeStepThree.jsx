@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './ResumeStepThree.css';
+import './ResumeStepThreestyle.css';
 
 const ResumeStepThree = ({ resumeData, updateResumeData, onPrev, onComplete }) => {
   const [summary, setSummary] = useState(resumeData.professionalSummary || '');
