@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Upload, CheckCircle, File, X, Calendar as CalendarIcon } from 'lucide-react';
-import './ResumeStepOne.css';
 
 const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
   const [file, setFile] = useState(null);
@@ -319,33 +318,33 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
     };
     
     return (
-      <div className="calendar-popup">
-        <div className="calendar-header">
-          <button onClick={handlePrevMonth}>&lt;</button>
-          <div>{months[currentMonth]} {currentYear}</div>
-          <button onClick={handleNextMonth}>&gt;</button>
+      <div className="absolute z-50 bg-white border border-gray-300 rounded-md shadow-lg p-2 w-64 top-full left-0 mt-1">
+        <div className="flex justify-between items-center mb-2">
+          <button onClick={handlePrevMonth} className="p-1 hover:bg-gray-100 rounded">&lt;</button>
+          <div className="font-medium">{months[currentMonth]} {currentYear}</div>
+          <button onClick={handleNextMonth} className="p-1 hover:bg-gray-100 rounded">&gt;</button>
         </div>
-        <div className="calendar-days">
-          <div className="calendar-day-header">Su</div>
-          <div className="calendar-day-header">Mo</div>
-          <div className="calendar-day-header">Tu</div>
-          <div className="calendar-day-header">We</div>
-          <div className="calendar-day-header">Th</div>
-          <div className="calendar-day-header">Fr</div>
-          <div className="calendar-day-header">Sa</div>
+        <div className="grid grid-cols-7 gap-1 text-center">
+          <div className="text-xs font-medium text-gray-500">Su</div>
+          <div className="text-xs font-medium text-gray-500">Mo</div>
+          <div className="text-xs font-medium text-gray-500">Tu</div>
+          <div className="text-xs font-medium text-gray-500">We</div>
+          <div className="text-xs font-medium text-gray-500">Th</div>
+          <div className="text-xs font-medium text-gray-500">Fr</div>
+          <div className="text-xs font-medium text-gray-500">Sa</div>
           
           {generateCalendarDays(currentYear, currentMonth).map((day, i) => (
             <div 
               key={i} 
-              className={`calendar-day ${day ? 'active' : ''}`}
+              className={`p-1 rounded-full text-sm ${day ? 'cursor-pointer hover:bg-gray-100' : ''}`}
               onClick={() => day && handleDateSelect(day)}
             >
               {day}
             </div>
           ))}
         </div>
-        <div className="calendar-footer">
-          <button onClick={onClose}>Cancel</button>
+        <div className="flex justify-end mt-2">
+          <button onClick={onClose} className="px-2 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded">Cancel</button>
         </div>
       </div>
     );
@@ -388,9 +387,6 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
       languages: formData.languages
     };
     
-    // Save to localStorage for persistence
-    localStorage.setItem('resumeData', JSON.stringify(completeResumeData));
-    
     // Update parent component data if updateResumeData function exists
     if (updateResumeData) {
       updateResumeData(completeResumeData);
@@ -414,57 +410,63 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
   };
 
   return (
-    <div className="resume-step-one">
+    <div className="w-full max-w-4xl mx-auto p-4">
       {/* Upload Resume Section */}
-      <div className="upload-container">
-        <h2>Upload your Resume</h2>
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <h2 className="text-lg font-semibold mb-4">Upload your Resume</h2>
         
         {!file ? (
           <div 
-            className={`drop-zone ${isDragging ? 'dragging' : ''}`}
+            className={`border-2 border-dashed border-gray-300 rounded-lg p-8 text-center transition-colors ${isDragging ? 'bg-gray-50' : ''}`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           >
-            <div className="upload-icon">
+            <div className="text-red-500 mb-3 flex justify-center">
               <Upload size={24} />
             </div>
-            <p className="drop-text">Drag and drop your resume here, or</p>
+            <p className="text-gray-600 mb-4">Drag and drop your resume here, or</p>
             <input 
               type="file" 
               id="file-input" 
               onChange={handleFileInput} 
-              style={{ display: 'none' }}
+              className="hidden"
               accept=".pdf,.doc,.docx"
             />
-            <button className="browse-btn" onClick={handleBrowseClick}>
+            <button 
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
+              onClick={handleBrowseClick}
+            >
               Browse files
             </button>
-            <p className="format-text">
+            <p className="text-gray-500 text-xs mt-4">
               Supported formats: PDF, DOC, DOCX (Max size: 2MB)
             </p>
           </div>
         ) : (
-          <div className="file-preview">
-            <div className="file-preview-header">
-              <div className="file-preview-title">
-                <CheckCircle size={20} className="file-success-icon" />
-                <span>Resume Uploaded</span>
+          <div className="border-2 border-gray-200 rounded-lg p-6">
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center">
+                <CheckCircle size={20} className="text-green-500 mr-2" />
+                <span className="font-medium">Resume Uploaded</span>
               </div>
-              <button className="remove-file-btn" onClick={removeFile}>
+              <button 
+                className="text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100"
+                onClick={removeFile}
+              >
                 <X size={18} />
               </button>
             </div>
-            <div className="file-details">
-              <div className="file-icon">
+            <div className="flex items-center p-4 bg-white border border-gray-200 rounded-lg mb-4">
+              <div className="text-blue-500 mr-4">
                 <File size={40} />
               </div>
-              <div className="file-info">
-                <p className="file-name">{file.name}</p>
-                <p className="file-size">{formatFileSize(file.size)}</p>
+              <div>
+                <p className="font-medium text-gray-800">{file.name}</p>
+                <p className="text-gray-500 text-sm">{formatFileSize(file.size)}</p>
               </div>
             </div>
-            <p className="upload-success-message">
+            <p className="text-green-700 bg-green-100 p-2 rounded text-center">
               Your resume has been successfully uploaded!
             </p>
           </div>
@@ -472,49 +474,49 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
       </div>
 
       {/* Personal Information Section */}
-      <div className="personal-info-section">
-        <h2 className="section-title">Preview Your Information</h2>
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <h2 className="text-2xl font-bold mb-6">Preview Your Information</h2>
 
-        <div className="personal-info-container">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* Title on the left */}
-          <div className="personal-info-title">
-            <h3>Personal Information</h3>
+          <div className="md:w-1/4">
+            <h3 className="text-lg font-semibold text-gray-800">Personal Information</h3>
           </div>
 
           {/* Input fields on the right */}
-          <div className="personal-info-fields">
-            <div className="info-field">
-              <label className="info-label">Full Name <span className="required">*</span></label>
+          <div className="md:w-3/4 space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Full Name <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 name="fullName"
                 value={formData.personalInfo.fullName}
                 onChange={handleInputChange}
-                className="info-input"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
 
-            <div className="info-field">
-              <label className="info-label">Email <span className="required">*</span></label>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Email <span className="text-red-500">*</span></label>
               <input
                 type="email"
                 name="email"
                 value={formData.personalInfo.email}
                 onChange={handleInputChange}
-                className="info-input"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
 
-            <div className="info-field">
-              <label className="info-label">Phone <span className="required">*</span></label>
-              <div className="phone-input-container">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Phone <span className="text-red-500">*</span></label>
+              <div className="flex">
                 <select
                   name="countryCode"
                   value={formData.personalInfo.countryCode}
                   onChange={handleCountryCodeChange}
-                  className="country-code-dropdown"
+                  className="w-24 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
                   {countryCodes.map((country) => (
                     <option key={country.code} value={country.code}>
@@ -527,31 +529,31 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                   name="phone"
                   value={formData.personalInfo.phone}
                   onChange={handleInputChange}
-                  className="phone-input"
+                  className="flex-1 px-3 py-2 border-t border-b border-r border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-red-500"
                   required
                 />
               </div>
             </div>
 
-            <div className="info-field">
-              <label className="info-label">Location <span className="required">*</span></label>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Location <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 name="location"
                 value={formData.personalInfo.location}
                 onChange={handleInputChange}
-                className="info-input"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
 
-            <div className="info-field">
-              <label className="info-label">Job Title <span className="required">*</span></label>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Job Title <span className="text-red-500">*</span></label>
               <select
                 name="jobTitle"
                 value={formData.personalInfo.jobTitle}
                 onChange={handleInputChange}
-                className="info-input"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               >
                 <option value="" disabled>Select job title</option>
@@ -565,104 +567,117 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
       </div>
       
       {/* Skills Section */}
-      <div className="skills-section">
-        <h3>Skills</h3>
-        <div className="skills-input-container">
-          <input
-            type="text"
-            value={skillInput}
-            onChange={handleSkillInputChange}
-            onKeyDown={handleSkillInputKeyDown}
-            placeholder="Enter your skills"
-            className="input-field"
-          />
-        </div>
-        <div className="skills-tags">
-          {formData.skills.map((skill, index) => (
-            <div key={index} className="skill-tag">
-              {skill}
-              <button onClick={() => removeSkill(skill)} className="remove-tag-btn">
-                <X size={14} />
-              </button>
-            </div>
-          ))}
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <h3 className="text-lg font-semibold mb-4">Skills</h3>
+        <div>
+          <div className="mb-4">
+            <input
+              type="text"
+              value={skillInput}
+              onChange={handleSkillInputChange}
+              onKeyDown={handleSkillInputKeyDown}
+              placeholder="Enter your skills"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+          <div className={`flex flex-wrap gap-2 ${formData.skills.length === 0 ? 'py-2' : ''}`}>
+            {formData.skills.map((skill, index) => (
+              <div key={index} className="flex items-center bg-red-500 text-white px-3 py-1 rounded-md">
+                {skill}
+                <button 
+                  onClick={() => removeSkill(skill)} 
+                  className="ml-2 text-white hover:text-gray-200"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       
       {/* Languages Section */}
-      <div className="languages-section">
-        <h3>Languages</h3>
-        <div className="languages-input-container">
-          <input
-            type="text"
-            value={languageInput}
-            onChange={handleLanguageInputChange}
-            onKeyDown={handleLanguageInputKeyDown}
-            placeholder="Enter language"
-            className="input-field"
-          />
-        </div>
-        <div className="languages-tags">
-          {formData.languages.map((language, index) => (
-            <div key={index} className="language-tag">
-              {language}
-              <button onClick={() => removeLanguage(language)} className="remove-tag-btn">
-                <X size={14} />
-              </button>
-            </div>
-          ))}
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <h3 className="text-lg font-semibold mb-4">Languages</h3>
+        <div>
+          <div className="mb-4">
+            <input
+              type="text"
+              value={languageInput}
+              onChange={handleLanguageInputChange}
+              onKeyDown={handleLanguageInputKeyDown}
+              placeholder="Enter language"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+          <div className={`flex flex-wrap gap-2 ${formData.languages.length === 0 ? 'py-2' : ''}`}>
+            {formData.languages.map((language, index) => (
+              <div key={index} className="flex items-center bg-red-500 text-white px-3 py-1 rounded-md">
+                {language}
+                <button 
+                  onClick={() => removeLanguage(language)} 
+                  className="ml-2 text-white hover:text-gray-200"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       
       {/* Work Experience Section */}
-      <div className="work-experience-section">
-        <div className="section-header">
-          <h3>Work Experience</h3>
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-lg font-semibold">Work Experience</h3>
           <button 
-            className="add-button"
+            className="flex items-center bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm"
             onClick={addWorkExperience}
           >
-            <span>+</span> Add Experience
+            <span className="text-lg mr-1">+</span> Add Experience
           </button>
         </div>
         
         {workExperiences.map((experience, index) => (
-          <div key={index} className="experience-item">
-            <div className="info-field">
-              <label>Company <span className="required">*</span></label>
+          <div key={index} className="bg-gray-50 rounded-lg p-5 mb-6 border border-gray-200">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Company <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 value={experience.company}
                 onChange={(e) => handleWorkExperienceChange(index, 'company', e.target.value)}
-                className="input-field"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
             
-            <div className="info-field">
-              <label>Position <span className="required">*</span></label>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Position <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 value={experience.jobTitle}
                 onChange={(e) => handleWorkExperienceChange(index, 'jobTitle', e.target.value)}
-                className="input-field"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
             
-            <div className="info-field">
-              <label>Duration <span className="required">*</span></label>
-              <div className="date-range-picker">
-                <div className="date-picker">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Duration <span className="text-red-500">*</span></label>
+              <div className="flex items-center space-x-2">
+                <div className="relative flex-1">
                   <input
                     type="text"
                     value={experience.startDate}
                     placeholder="MM/DD/YYYY"
                     readOnly
                     onClick={() => toggleCalendar(`startWork-${index}`)}
-                    className="date-input"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md cursor-pointer"
                   />
-                  <button className="calendar-button" onClick={() => toggleCalendar(`startWork-${index}`)}>
+                  <button 
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    onClick={() => toggleCalendar(`startWork-${index}`)}
+                  >
                     <CalendarIcon size={18} />
                   </button>
                   {showCalendar[`startWork-${index}`] && (
@@ -676,18 +691,21 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                   )}
                 </div>
                 
-                <span className="to-text">To</span>
+                <span className="text-gray-500">To</span>
                 
-                <div className="date-picker">
+                <div className="relative flex-1">
                   <input
                     type="text"
                     value={experience.endDate}
                     placeholder="MM/DD/YYYY"
                     readOnly
                     onClick={() => toggleCalendar(`endWork-${index}`)}
-                    className="date-input"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md cursor-pointer"
                   />
-                  <button className="calendar-button" onClick={() => toggleCalendar(`endWork-${index}`)}>
+                  <button 
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    onClick={() => toggleCalendar(`endWork-${index}`)}
+                  >
                     <CalendarIcon size={18} />
                   </button>
                   {showCalendar[`endWork-${index}`] && (
@@ -703,12 +721,12 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
               </div>
             </div>
             
-            <div className="info-field">
-              <label>Description</label>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
               <textarea
                 value={experience.description}
                 onChange={(e) => handleWorkExperienceChange(index, 'description', e.target.value)}
-                className="textarea-field"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 rows={5}
                 placeholder="Enter job responsibilities (each on a new line)"
               />
@@ -716,7 +734,7 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
             
             {index > 0 && (
               <button 
-                className="remove-item-btn"
+                className="text-red-500 hover:text-red-700 text-sm font-medium"
                 onClick={() => {
                   const updated = workExperiences.filter((_, i) => i !== index);
                   setWorkExperiences(updated);
@@ -730,26 +748,26 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
       </div>
       
       {/* Education Section */}
-      <div className="education-section">
-        <div className="section-header">
-          <h3>Education</h3>
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-lg font-semibold">Education</h3>
           <button 
-            className="add-button"
+            className="flex items-center bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-md text-sm"
             onClick={addEducation}
           >
-            <span>+</span> Add Education
+            <span className="text-lg mr-1">+</span> Add Education
           </button>
         </div>
         
         {educations.map((education, index) => (
-          <div key={index} className="education-item">
-            <div className="info-field">
-              <label>Institution <span className="required">*</span></label>
-              <div className="institution-container">
+          <div key={index} className="bg-gray-50 rounded-lg p-5 mb-6 border border-gray-200">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Institution <span className="text-red-500">*</span></label>
+              <div className="relative">
                 <select
                   value={education.institution}
                   onChange={(e) => handleEducationChange(index, 'institution', e.target.value)}
-                  className="institution-dropdown"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-red-500"
                   required
                 >
                   <option value="" disabled>Select institution</option>
@@ -757,34 +775,37 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                     <option key={inst} value={inst}>{inst}</option>
                   ))}
                 </select>
-                <div className="dropdown-arrow">▼</div>
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none">▼</div>
               </div>
             </div>
             
-            <div className="info-field">
-              <label>Degree <span className="required">*</span></label>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Degree <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 value={education.degree}
                 onChange={(e) => handleEducationChange(index, 'degree', e.target.value)}
-                className="input-field"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
             
-            <div className="info-field">
-              <label>Duration <span className="required">*</span></label>
-              <div className="date-range-picker">
-                <div className="date-picker">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Duration <span className="text-red-500">*</span></label>
+              <div className="flex items-center space-x-2">
+                <div className="relative flex-1">
                   <input
                     type="text"
                     value={education.startDate}
                     placeholder="MM/DD/YYYY"
                     readOnly
                     onClick={() => toggleCalendar(`startEdu-${index}`)}
-                    className="date-input"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md cursor-pointer"
                   />
-                  <button className="calendar-button" onClick={() => toggleCalendar(`startEdu-${index}`)}>
+                  <button 
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    onClick={() => toggleCalendar(`startEdu-${index}`)}
+                  >
                     <CalendarIcon size={18} />
                   </button>
                   {showCalendar[`startEdu-${index}`] && (
@@ -798,18 +819,21 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
                   )}
                 </div>
                 
-                <span className="to-text">To</span>
+                <span className="text-gray-500">To</span>
                 
-                <div className="date-picker">
+                <div className="relative flex-1">
                   <input 
                     type="text"
                     value={education.endDate}
                     placeholder="MM/DD/YYYY"
                     readOnly
                     onClick={() => toggleCalendar(`endEdu-${index}`)}
-                    className="date-input"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md cursor-pointer"
                   />
-                  <button className="calendar-button" onClick={() => toggleCalendar(`endEdu-${index}`)}>
+                  <button 
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    onClick={() => toggleCalendar(`endEdu-${index}`)}
+                  >
                     <CalendarIcon size={18} />
                   </button>
                   {showCalendar[`endEdu-${index}`] && (
@@ -825,19 +849,19 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
               </div>
             </div>
             
-            <div className="info-field">
-              <label>Description</label>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
               <textarea
                 value={education.description}
                 onChange={(e) => handleEducationChange(index, 'description', e.target.value)}
-                className="textarea-field"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                 rows={5}
               />
             </div>
             
             {index > 0 && (
               <button 
-                className="remove-item-btn"
+                className="text-red-500 hover:text-red-700 text-sm font-medium"
                 onClick={() => {
                   const updated = educations.filter((_, i) => i !== index);
                   setEducations(updated);
@@ -850,9 +874,9 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
         ))}
       </div>
       
-      <div className="action-buttons">
+      <div className="flex justify-end">
         <button 
-          className="continue-btn"
+          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors"
           onClick={handleContinue}
         >
           Continue
