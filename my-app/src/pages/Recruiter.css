@@ -1,7 +1,7 @@
 /* COMPLETE FULL WIDTH FIX - Replace your entire Recruiter.css with this */
 
 /* Global Reset */
-* {
+/* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,6 +21,25 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+/* Header and SubHeader positioning */
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+.sub-header-container {
+  position: fixed;
+  top: 72px; /* Height of the main header */
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: black;
 }
 
 /* Remove any container constraints */
@@ -48,6 +67,7 @@ main,
   width: 100vw;
   margin: 0;
   padding: 0;
+  margin-top: -72px;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
@@ -78,7 +98,7 @@ main,
 .hero-content {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 1rem;
+  padding: 7rem 1rem 4rem; /* Increased top padding to account for header */
   display: flex;
   justify-content: space-between;
   align-items: center;
