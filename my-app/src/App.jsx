@@ -1,5 +1,4 @@
 import Register from './pages/register';
-<<<<<<< HEAD
 import Login from './pages/login';
 import UploadResumePage from './pages/UploadResumePage';
 import Recruiter from './pages/Recruiter';
@@ -16,14 +15,6 @@ function App() {
         </Routes>
     </div>
   );
-=======
-import './index.css';
-import Explore from './pages/Explore';
-
-
-function App() {
-  return <UploadResumePage/>;
->>>>>>> 4183a88c70282d993e5b385674805b294ad50ec2
 }
 
 export default App;

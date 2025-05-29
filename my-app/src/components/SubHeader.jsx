@@ -1,29 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import './SubHeader.css';
-
-const SubHeader = () => {
-  return (
-    <nav className="sub-header-container">
-      <div className="sub-header-content">
-        <ul className="sub-header-nav">
-          <li>
-            <Link to="/find-job" className="sub-nav-item">
-              Find Job
-            </Link>
-          </li>
-          <li>
-            <Link to="/hire-talent" className="sub-nav-item active">
-              Hire Talent
-            </Link>
-          </li>
-        </ul>
-        <div className="sub-header-right">
-          <Link to="/login" className="sub-login-button">
-            login
-          </Link>
-=======
 import { Link, useLocation } from 'react-router-dom';
 
 const SubHeader = () => {
@@ -88,15 +63,10 @@ const SubHeader = () => {
           >
             Register
           </Link>
->>>>>>> 4183a88c70282d993e5b385674805b294ad50ec2
         </div>
       </div>
     </nav>
   );
 };
 
-<<<<<<< HEAD
 export default SubHeader;
-=======
-export default SubHeader;
->>>>>>> 4183a88c70282d993e5b385674805b294ad50ec2
