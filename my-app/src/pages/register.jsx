@@ -75,14 +75,12 @@ const Register = () => {
         setRegistrationSuccess(true);
         localStorage.setItem('authToken', data.token);
         localStorage.setItem('userData', JSON.stringify({
-          email: data.email,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          role: formData.role
+          email,
+          firstName,
+          lastName,
+          role
         }));
-        setTimeout(() => {
-          navigate('/client-dashboard');
-        }, 1500);
+        navigate('/client-dashboard');
       } else if (res.status === 400 && data) {
         const errors = [];
         for (const key in data) {
@@ -92,11 +90,11 @@ const Register = () => {
         }
         setMessage(errors.join(' | '));
       } else {
-        setMessage('An unexpected error occurred.');
+        setMessage('Registration failed. Please try again.');
       }
     } catch (error) {
       console.error('Registration error:', error);
-      setMessage('Failed to connect to the server.');
+      setMessage('Failed to connect to the server. Please try again.');
     }
   };
 

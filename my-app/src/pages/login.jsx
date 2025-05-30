@@ -32,52 +32,32 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
-    console.log('Login attempt started');
-
-    const { email, password } = formData;
-    if (!email || !password) {
-      return setMessage('Please fill in both email and password.');
-    }
 
     try {
-      console.log('Sending request to server...');
       const res = await fetch('http://192.168.100.39:8000/api/auth/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
-      console.log('Server response:', data);
 
       if (res.ok) {
-        console.log('Login successful, setting states...');
-        setLoginSuccess(true);
+        // Store token and user data
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('userData', JSON.stringify({
+          email: formData.email,
+          // Add any other user data you receive from the server
+        }));
         
-        // Store auth token and user data
-        if (data.token) {
-          localStorage.setItem('authToken', data.token);
-          localStorage.setItem('userData', JSON.stringify({
-            email: data.email,
-            firstName: data.first_name,
-            lastName: data.last_name,
-            role: data.is_recruiter ? 'recruiter' : 'jobseeker'
-          }));
-          console.log('Auth token and user data stored');
-          
-          // Navigate immediately instead of setTimeout
-          navigate('/client-dashboard');
-        } else {
-          console.error('No token received from server');
-          setMessage('Login successful but no token received. Please try again.');
-        }
+        // Navigate to dashboard
+        navigate('/client-dashboard');
       } else {
-        console.error('Login failed:', data);
-        setMessage(data.detail || 'Invalid email or password.');
+        setMessage(data.detail || 'Login failed. Please check your credentials.');
       }
     } catch (error) {
       console.error('Login error:', error);
-      setMessage('Failed to connect to the server. Please check your internet connection.');
+      setMessage('Failed to connect to the server. Please try again.');
     }
   };
 
@@ -111,11 +91,11 @@ const Login = () => {
         <img src="/images/logo1.png" alt="logo" className="logo" />
         {!loginSuccess ? (
           <>
-            <h2 className="form-title">Welcome back !</h2>
+            <h2 className="form-title">Welcome back!</h2>
             <p className="subtitle">Welcome back, please enter your details</p>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label>Email :</label>
+                <label>Email:</label>
                 <input
                   type="email"
                   name="email"
@@ -127,7 +107,7 @@ const Login = () => {
               </div>
 
               <div className="form-group">
-                <label>Password :</label>
+                <label>Password:</label>
                 <input
                   type="password"
                   name="password"
@@ -162,10 +142,15 @@ const Login = () => {
                 </div>
               )}
 
-              <button type="submit" className="submit-btn">login</button>
-              {message && <p className="form-message">{message}</p>}
-              <p className="signin-text">
-                Don't have an account ? <span className="signin-link">sign up</span>
+              {message && <p className="error-message">{message}</p>}
+
+              <button type="submit" className="submit-btn">Login</button>
+
+              <p className="register-link">
+                Don't have an account?{' '}
+                <span onClick={() => navigate('/auth/register')} className="link">
+                  Register here
+                </span>
               </p>
             </form>
           </>
