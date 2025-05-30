@@ -191,7 +191,11 @@ const Recruiter = () => {
               <p className="hero-cta-text">Find the right Talent with AI</p>
               <button 
                 className="explore-button"
-                onClick={() => navigate('/explore')}
+                onClick={() => {
+                  console.log('Explore button clicked');
+                  navigate('/explore');
+                  console.log('Navigation triggered');
+                }}
               >
                 <span>
                   Explore

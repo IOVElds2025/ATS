@@ -5,6 +5,7 @@ import Login from './pages/login';
 import UploadResumePage from './pages/UploadResumePage';
 import Recruiter from './pages/Recruiter';
 import Explore from './pages/Explore'; // Assurez-vous que ce fichier existe
+import ClientDashboard from './pages/ClientDashboard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/upload-resume" element={<UploadResumePage />} />
         <Route path="/recruiter" element={<Recruiter />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/dashboard" element={<ClientDashboard />} />
         <Route path="/" element={<Recruiter />} />
       </Routes>
     </div>
