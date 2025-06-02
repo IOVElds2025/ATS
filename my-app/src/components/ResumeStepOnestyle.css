@@ -1,363 +1,343 @@
+/* Base reset and isolation for the component */
 .resume-step-one {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  /* Upload Container */
-  .upload-container {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .upload-container h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-  
-  .drop-zone {
-    border: 2px dashed #ccc;
-    border-radius: 5px;
-    padding: 30px 20px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .drop-zone.dragging {
-    background-color: #f7f7f7;
-  }
-  
-  .upload-icon {
-    color: #f44336;
-    margin-bottom: 10px;
-  }
-  
-  .drop-text {
-    margin-bottom: 15px;
-    font-size: 15px;
-  }
-  
-  .browse-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .browse-btn:hover {
-    background-color: #e53935;
-  }
-  
-  .format-text {
-    font-size: 12px;
-    color: #777;
-  }
-  
-  /* Preview Section */
-  .preview-section {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .preview-section h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  .personal-info {
-    margin-bottom: 20px;
-  }
-  
-  .personal-info h3 {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 15px;
-  }
-  
-  .info-field {
-    margin-bottom: 15px;
-  }
-  
-  .info-field label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .required {
-    color: #f44336;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  /* Phone Input */
-  .phone-input-container {
-    display: flex;
-  }
-  
-  .country-code-select {
-    position: relative;
-    width: 100px;
-  }
-  
-  .country-code-dropdown {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    font-size: 14px;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #fff;
-  }
-  
-  .dropdown-arrow {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 10px;
-    color: #777;
-    pointer-events: none;
-  }
-  
-  .phone-input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
-    font-size: 14px;
-  }
-  
-  /* Job Title */
-  .job-title-container {
-    position: relative;
-  }
-  
-  .job-title-dropdown {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #fff;
-  }
-  
-  /* Action Buttons */
-  .action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  .continue-btn {
-    background-color: #2196f3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .continue-btn:hover {
-    background-color: #1e88e5;
-  }
-  
-  .continue-btn:disabled {
-    background-color: #bdbdbd;
-    cursor: not-allowed;
-  }
-  /* Add these CSS styles to your ResumeStepOne.css file */
-
-/* File Preview Styling */
-.file-preview {
-    border: 2px solid #e6e6e6;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .file-preview-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .file-preview-title {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    font-size: 16px;
-  }
-  
-  .file-success-icon {
-    margin-right: 8px;
-    color: #34c759;
-  }
-  
-  .remove-file-btn {
-    background: none;
-    border: none;
-    color: #888;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .remove-file-btn:hover {
-    background-color: #eee;
-    color: #333;
-  }
-  
-  .file-details {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 6px;
-    border: 1px solid #e6e6e6;
-  }
-  
-  .file-icon {
-    margin-right: 15px;
-    color: #4a6ee0;
-  }
-  
-  .file-info {
-    flex: 1;
-  }
-  
-  .file-name {
-    margin: 0 0 5px 0;
-    font-weight: 500;
-    font-size: 14px;
-    color: #333;
-    word-break: break-all;
-  }
-  
-  .file-size {
-    margin: 0;
-    font-size: 12px;
-    color: #888;
-  }
-  
-  .upload-success-message {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #d4edda;
-    border-radius: 4px;
-    color: #155724;
-    text-align: center;
-  }
-  
-  /* Existing styles should remain below *//* Add these styles to your existing ResumeStepOne.css file */
-
-/* Work Experience and Education Sections */
-.work-experience-section,
-.education-section {
-  margin-top: 30px;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 20px;
+  all: initial;
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+               Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Upload Container */
+.resume-step-one .upload-container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   margin-bottom: 20px;
 }
 
-.section-header h3 {
+.resume-step-one .upload-container h2 {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
-  margin: 0;
+  margin-bottom: 15px;
+  color: #16204d;
 }
 
-.add-button {
+.resume-step-one .drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.resume-step-one .drop-zone.dragging {
+  background-color: #f7f7f7;
+  border-color: #f44336;
+}
+
+.resume-step-one .upload-icon {
+  color: #f44336;
+  margin-bottom: 10px;
+}
+
+.resume-step-one .drop-text {
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: #555;
+}
+
+.resume-step-one .browse-btn {
   background-color: #f44336;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 8px 12px;
+  padding: 8px 20px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
 }
 
-.add-button:hover {
-  background-color: #d32f2f;
+.resume-step-one .browse-btn:hover {
+  background-color: #e53935;
 }
 
-.add-button span {
-  font-size: 18px;
-  margin-right: 5px;
+.resume-step-one .format-text {
+  font-size: 12px;
+  color: #777;
 }
 
-.experience-item,
-.education-item {
+/* File Preview */
+.resume-step-one .file-preview {
+  border: 2px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
   background-color: #f9f9f9;
+}
+
+.resume-step-one .file-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.resume-step-one .file-preview-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.resume-step-one .file-success-icon {
+  margin-right: 8px;
+  color: #34c759;
+}
+
+.resume-step-one .remove-file-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-step-one .remove-file-btn:hover {
+  background-color: #eee;
+  color: #333;
+}
+
+.resume-step-one .file-details {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+}
+
+.resume-step-one .file-icon {
+  margin-right: 15px;
+  color: #4a6ee0;
+}
+
+.resume-step-one .file-info {
+  flex: 1;
+}
+
+.resume-step-one .file-name {
+  margin: 0 0 5px 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  word-break: break-all;
+}
+
+.resume-step-one .file-size {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
+}
+
+.resume-step-one .upload-success-message {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #d4edda;
+  border-radius: 4px;
+  color: #155724;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* WHITE BACKGROUND CONTAINER - From Personal Information to Continue Button */
+.resume-step-one .content-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Personal Information Section */
+.resume-step-one .personal-info-section {
+  margin-bottom: 30px;
+}
+
+.resume-step-one .section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #16204d;
+}
+
+.resume-step-one .personal-info-container {
+  display: flex;
+  gap: 20px;
+}
+
+.resume-step-one .personal-info-title {
+  flex: 1;
+}
+
+.resume-step-one .personal-info-title h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 10px;
+}
+
+.resume-step-one .personal-info-fields {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.resume-step-one .info-field {
+  margin-bottom: 15px;
+}
+
+.resume-step-one .info-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.resume-step-one .required {
+  color: #f44336;
+}
+
+.resume-step-one .info-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.resume-step-one .info-input:focus {
+  border-color: #f44336;
+  outline: none;
+}
+
+/* Phone Input */
+.resume-step-one .phone-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.resume-step-one .country-code-dropdown {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.resume-step-one .phone-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Skills and Languages Section */
+.skills-section, .languages-section {
+  margin-bottom: 30px;
+}
+
+.skills-input-container, .languages-input-container {
+  margin-bottom: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.skills-tags, .languages-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag, .language-tag {
+  display: flex;
+  align-items: center;
+  background-color: #e74c3c;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.remove-tag-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Work Experience Section */
+.resume-step-one .work-experience-section {
+  margin-top: 30px;
+}
+
+.resume-step-one .experience-item {
+  background-color: #fff;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
   border: 1px solid #e0e0e0;
 }
 
-/* Date Range Picker */
-.date-range-picker {
+.resume-step-one .date-range-picker {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.date-picker {
+.resume-step-one .date-picker {
   position: relative;
   flex: 1;
 }
 
-.date-input {
+.resume-step-one .date-input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
-  cursor: pointer;
+  background-color: #fff;
 }
 
-.calendar-button {
+.resume-step-one .calendar-button {
   position: absolute;
   right: 10px;
   top: 50%;
@@ -368,21 +348,23 @@
   color: #666;
 }
 
-.to-text {
+.resume-step-one .to-text {
   margin: 0 10px;
   color: #666;
 }
 
-.textarea-field {
+.resume-step-one .textarea-field {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
   resize: vertical;
+  min-height: 100px;
+  background-color: #fff;
 }
 
-.remove-item-btn {
+.resume-step-one .remove-item-btn {
   background-color: #f5f5f5;
   color: #666;
   border: 1px solid #ddd;
@@ -393,16 +375,16 @@
   margin-top: 10px;
 }
 
-.remove-item-btn:hover {
+.resume-step-one .remove-item-btn:hover {
   background-color: #e0e0e0;
 }
 
-/* Calendar popup */
-.calendar-popup {
+/* Calendar Popup */
+.resume-step-one .calendar-popup {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -412,14 +394,14 @@
   margin-top: 5px;
 }
 
-.calendar-header {
+.resume-step-one .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.calendar-header button {
+.resume-step-one .calendar-header button {
   background: none;
   border: none;
   cursor: pointer;
@@ -427,13 +409,13 @@
   color: #333;
 }
 
-.calendar-days {
+.resume-step-one .calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
 }
 
-.calendar-day-header {
+.resume-step-one .calendar-day-header {
   text-align: center;
   font-weight: 600;
   font-size: 12px;
@@ -441,7 +423,7 @@
   padding: 5px 0;
 }
 
-.calendar-day {
+.resume-step-one .calendar-day {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -451,22 +433,17 @@
   border-radius: 50%;
 }
 
-.calendar-day.active:hover {
+.resume-step-one .calendar-day.active:hover {
   background-color: #f0f0f0;
 }
 
-.calendar-day:not(.active) {
-  color: transparent;
-  cursor: default;
-}
-
-.calendar-footer {
+.resume-step-one .calendar-footer {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
 }
 
-.calendar-footer button {
+.resume-step-one .calendar-footer button {
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -475,297 +452,109 @@
   cursor: pointer;
 }
 
-.calendar-footer button:hover {
+.resume-step-one .calendar-footer button:hover {
   background-color: #e0e0e0;
 }
 
-/* Institution dropdown */
-.institution-container {
-  position: relative;
+/* Education Section */
+.resume-step-one .education-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
 }
 
-.institution-dropdown {
+.resume-step-one .education-title h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #16204d;
+  margin: 0;
+}
+
+.resume-step-one .education-fields {
+  margin-top: 20px;
+}
+
+.resume-step-one .education-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.resume-step-one .institution-dropdown {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: transparent;
-  cursor: pointer;
+  background-color: #fff;
 }
 
-/* Responsive adjustments */
+/* Add Button */
+.resume-step-one .add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.resume-step-one .add-button:hover {
+  background-color: #d32f2f;
+}
+
+.resume-step-one .add-button span {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* Action Buttons */
+.resume-step-one .action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.resume-step-one .continue-btn {
+  background-color: #16204d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resume-step-one .continue-btn:hover {
+  background-color: #0A162F;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .date-range-picker {
+  .resume-step-one .personal-info-container,
+  .resume-step-one .work-experience-section .personal-info-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .resume-step-one .date-range-picker {
     flex-direction: column;
     align-items: flex-start;
   }
   
-  .to-text {
+  .resume-step-one .to-text {
     margin: 10px 0;
+    align-self: center;
   }
-  
-  .date-picker {
-    width: 100%;
-  }
-}
-/* Skills and Languages Sections */
-.skills-section,
-.languages-section {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.skills-section h3,
-.languages-section h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.skills-input-container,
-.languages-input-container {
-  margin-bottom: 15px;
-}
-
-/* Tag styling */
-.skills-tags,
-.languages-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.skill-tag,
-.language-tag {
-  display: inline-flex;
-  align-items: center;
-  background-color: #f44336;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.remove-tag-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  color: white;
-  margin-left: 8px;
-  cursor: pointer;
-  padding: 0;
-}
-
-/* Input field for entering new skills/languages */
-.input-field {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  background-color: #f9f9f9;
-}
-.pdf-preview {
-  margin-top: 20px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  padding: 10px;
-  background: #fafafa;
-  text-align: center;
-}
-.docx-preview {
-  margin-top: 20px;
-  text-align: center;
-}
-
-/* Title: Preview Your Information */
-.section-title {
-  font-size: 28px; /* Increase font size */
-  font-weight: bold; /* Make it bold */
-  margin-bottom: 20px;
-  color: #000;
-}
-
-/* Subtitle: Personal Information */
-.personal-info-title {
-  font-size: 16px; /* Make it smaller */
-  font-weight: normal; /* Remove bold */
-  color: #000;
-  margin-top: 10px; /* Keep some spacing above */
-}
-
-/* Personal info container */
-.personal-info-container {
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-/* Input fields on the right */
-.personal-info-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* Info field container */
-.info-field {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Label styling */
-.info-label {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #000;
-}
-
-/* Input field styling */
-.info-input {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.info-input:focus {
-  border-color: #e74c3c;
-}
-
-/* Phone input container */
-.phone-input-container {
-  display: flex;
-  gap: 10px;
-}
-
-/* Country code dropdown */
-.country-code-dropdown {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  outline: none;
-  width: 80px;
-}
-
-/* Phone input */
-.phone-input {
-  flex: 1;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  outline: none;
-}
-
-/* Required field indicator */
-.required {
-  color: #e74c3c;
-}
-
-/* Work Experience Section */
-.work-experience-section {
-  margin-top: 24px;
-}
-
-.personal-info-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.personal-info-title {
-  flex: 1;
-  text-align: left;
-}
-
-.personal-info-title h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #16204d;
-}
-
-.personal-info-fields {
-  flex: 2;
-}
-
-.info-field {
-  margin-bottom: 16px;
-}
-
-.info-field label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: #16204d;
-  margin-bottom: 8px;
-}
-
-.input-field,
-.textarea-field {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.date-range-picker {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.date-picker {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.date-input {
-  width: 120px;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.calendar-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.add-button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 16px;
-}
-
-.add-button:hover {
-  background-color: #e53935;
 }

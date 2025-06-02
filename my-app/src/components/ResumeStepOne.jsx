@@ -564,56 +564,6 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
         </div>
       </div>
       
-      {/* Skills Section */}
-      <div className="skills-section">
-        <h3>Skills</h3>
-        <div className="skills-input-container">
-          <input
-            type="text"
-            value={skillInput}
-            onChange={handleSkillInputChange}
-            onKeyDown={handleSkillInputKeyDown}
-            placeholder="Enter your skills"
-            className="input-field"
-          />
-        </div>
-        <div className="skills-tags">
-          {formData.skills.map((skill, index) => (
-            <div key={index} className="skill-tag">
-              {skill}
-              <button onClick={() => removeSkill(skill)} className="remove-tag-btn">
-                <X size={14} />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      {/* Languages Section */}
-      <div className="languages-section">
-        <h3>Languages</h3>
-        <div className="languages-input-container">
-          <input
-            type="text"
-            value={languageInput}
-            onChange={handleLanguageInputChange}
-            onKeyDown={handleLanguageInputKeyDown}
-            placeholder="Enter language"
-            className="input-field"
-          />
-        </div>
-        <div className="languages-tags">
-          {formData.languages.map((language, index) => (
-            <div key={index} className="language-tag">
-              {language}
-              <button onClick={() => removeLanguage(language)} className="remove-tag-btn">
-                <X size={14} />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-      
       {/* Work Experience Section */}
       <div className="work-experience-section">
         <div className="personal-info-container">
@@ -734,124 +684,172 @@ const ResumeStepOne = ({ resumeData, updateResumeData, onNext }) => {
       </div>
       
       {/* Education Section */}
-      <div className="education-section">
-        <div className="section-header">
-          <h3>Education</h3>
-          <button 
-            className="add-button"
-            onClick={addEducation}
-          >
-            <span>+</span> Add Education
-          </button>
-        </div>
-        
-        {educations.map((education, index) => (
-          <div key={index} className="education-item">
-            <div className="info-field">
-              <label>Institution <span className="required">*</span></label>
-              <div className="institution-container">
-                <select
-                  value={education.institution}
-                  onChange={(e) => handleEducationChange(index, 'institution', e.target.value)}
-                  className="institution-dropdown"
-                  required
-                >
-                  <option value="" disabled>Select institution</option>
-                  {institutions.map((inst) => (
-                    <option key={inst} value={inst}>{inst}</option>
-                  ))}
-                </select>
-                <div className="dropdown-arrow">▼</div>
-              </div>
-            </div>
-            
-            <div className="info-field">
-              <label>Degree <span className="required">*</span></label>
-              <input
-                type="text"
-                value={education.degree}
-                onChange={(e) => handleEducationChange(index, 'degree', e.target.value)}
-                className="input-field"
-                required
-              />
-            </div>
-            
-            <div className="info-field">
-              <label>Duration <span className="required">*</span></label>
-              <div className="date-range-picker">
-                <div className="date-picker">
+      <div className="work-experience-section">
+        <div className="personal-info-container">
+          {/* Title on the left */}
+          <div className="personal-info-title">
+            <h3>Education</h3>
+          </div>
+
+          {/* Form fields on the right */}
+          <div className="personal-info-fields">
+            {educations.map((education, index) => (
+              <div key={index} className="experience-item">
+                <div className="info-field">
+                  <label>Institution <span className="required">*</span></label>
                   <input
                     type="text"
-                    value={education.startDate}
-                    placeholder="MM/DD/YYYY"
-                    readOnly
-                    onClick={() => toggleCalendar(`startEdu-${index}`)}
-                    className="date-input"
+                    value={education.institution}
+                    onChange={(e) => handleEducationChange(index, 'institution', e.target.value)}
+                    className="input-field"
+                    required
                   />
-                  <button className="calendar-button" onClick={() => toggleCalendar(`startEdu-${index}`)}>
-                    <CalendarIcon size={18} />
-                  </button>
-                  {showCalendar[`startEdu-${index}`] && (
-                    <CalendarPicker
-                      onSelectDate={(date) => handleSelectDate(date, index, 'startDate', 'education')}
-                      onClose={() => toggleCalendar(`startEdu-${index}`)}
-                      field="startDate"
-                      index={index}
-                      section="education"
-                    />
-                  )}
                 </div>
-                
-                <span className="to-text">To</span>
-                
-                <div className="date-picker">
-                  <input 
+
+                <div className="info-field">
+                  <label>Degree <span className="required">*</span></label>
+                  <input
                     type="text"
-                    value={education.endDate}
-                    placeholder="MM/DD/YYYY"
-                    readOnly
-                    onClick={() => toggleCalendar(`endEdu-${index}`)}
-                    className="date-input"
+                    value={education.degree}
+                    onChange={(e) => handleEducationChange(index, 'degree', e.target.value)}
+                    className="input-field"
+                    required
                   />
-                  <button className="calendar-button" onClick={() => toggleCalendar(`endEdu-${index}`)}>
-                    <CalendarIcon size={18} />
-                  </button>
-                  {showCalendar[`endEdu-${index}`] && (
-                    <CalendarPicker
-                      onSelectDate={(date) => handleSelectDate(date, index, 'endDate', 'education')}
-                      onClose={() => toggleCalendar(`endEdu-${index}`)}
-                      field="endDate"
-                      index={index}
-                      section="education"
-                    />
-                  )}
                 </div>
+
+                <div className="info-field">
+                  <label>Duration <span className="required">*</span></label>
+                  <div className="date-range-picker">
+                    <div className="date-picker">
+                      <input
+                        type="text"
+                        value={education.startDate}
+                        placeholder="DD/MM/YYYY"
+                        readOnly
+                        onClick={() => toggleCalendar(`startEdu-${index}`)}
+                        className="date-input"
+                      />
+                      <button className="calendar-button" onClick={() => toggleCalendar(`startEdu-${index}`)}>
+                        <CalendarIcon size={18} />
+                      </button>
+                      {showCalendar[`startEdu-${index}`] && (
+                        <CalendarPicker
+                          onSelectDate={(date) => handleSelectDate(date, index, 'startDate', 'education')}
+                          onClose={() => toggleCalendar(`startEdu-${index}`)}
+                          field="startDate"
+                          index={index}
+                          section="education"
+                        />
+                      )}
+                    </div>
+
+                    <span className="to-text">To</span>
+
+                    <div className="date-picker">
+                      <input
+                        type="text"
+                        value={education.endDate}
+                        placeholder="DD/MM/YYYY"
+                        readOnly
+                        onClick={() => toggleCalendar(`endEdu-${index}`)}
+                        className="date-input"
+                      />
+                      <button className="calendar-button" onClick={() => toggleCalendar(`endEdu-${index}`)}>
+                        <CalendarIcon size={18} />
+                      </button>
+                      {showCalendar[`endEdu-${index}`] && (
+                        <CalendarPicker
+                          onSelectDate={(date) => handleSelectDate(date, index, 'endDate', 'education')}
+                          onClose={() => toggleCalendar(`endEdu-${index}`)}
+                          field="endDate"
+                          index={index}
+                          section="education"
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="info-field">
+                  <label>Description</label>
+                  <textarea
+                    value={education.description}
+                    onChange={(e) => handleEducationChange(index, 'description', e.target.value)}
+                    className="textarea-field"
+                    rows={5}
+                    placeholder="Enter education details (each on a new line)"
+                  />
+                </div>
+
+                {index > 0 && (
+                  <button
+                    className="remove-item-btn"
+                    onClick={() => {
+                      const updated = educations.filter((_, i) => i !== index);
+                      setEducations(updated);
+                    }}
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
-            </div>
-            
-            <div className="info-field">
-              <label>Description</label>
-              <textarea
-                value={education.description}
-                onChange={(e) => handleEducationChange(index, 'description', e.target.value)}
-                className="textarea-field"
-                rows={5}
-              />
-            </div>
-            
-            {index > 0 && (
-              <button 
-                className="remove-item-btn"
-                onClick={() => {
-                  const updated = educations.filter((_, i) => i !== index);
-                  setEducations(updated);
-                }}
-              >
-                Remove
-              </button>
-            )}
+            ))}
+
+            <button className="add-button" onClick={addEducation}>
+              <span>+</span> Add Education
+            </button>
           </div>
-        ))}
+        </div>
+      </div>
+
+      {/* Skills Section */}
+      <div className="skills-section">
+        <h3>Skills</h3>
+        <div className="skills-input-container">
+          <input
+            type="text"
+            value={skillInput}
+            onChange={handleSkillInputChange}
+            onKeyDown={handleSkillInputKeyDown}
+            placeholder="Enter your skills"
+            className="input-field"
+          />
+        </div>
+        <div className="skills-tags">
+          {formData.skills.map((skill, index) => (
+            <div key={index} className="skill-tag">
+              {skill}
+              <button onClick={() => removeSkill(skill)} className="remove-tag-btn">
+                <X size={14} />
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Languages Section */}
+      <div className="languages-section">
+        <h3>Languages</h3>
+        <div className="languages-input-container">
+          <input
+            type="text"
+            value={languageInput}
+            onChange={handleLanguageInputChange}
+            onKeyDown={handleLanguageInputKeyDown}
+            placeholder="Enter language"
+            className="input-field"
+          />
+        </div>
+        <div className="languages-tags">
+          {formData.languages.map((language, index) => (
+            <div key={index} className="language-tag">
+              {language}
+              <button onClick={() => removeLanguage(language)} className="remove-tag-btn">
+                <X size={14} />
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
       
       <div className="action-buttons">
