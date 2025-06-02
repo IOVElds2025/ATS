@@ -4,17 +4,16 @@ import LeftSection from "../components/LeftSection";
 
 const Register = () => {
   return (
-    <div className="flex w-screen h-screen overflow-hidden">
-      {/* Left side: form with vertical scroll if content overflows */}
-      <div className="w-1/2 overflow-y-auto">
-        <LeftSection />
-      </div>
-
-      {/* Right side */}
-      <div className="w-1/2">
-        <RightSection />
-      </div>
+    <div className="flex">
+    <div className="w-1/2 overflow-auto" style={{ marginRight: '50vw' }}>
+      <LeftSection />
     </div>
+  
+    <div className="fixed right-0 top-0 w-1/2 h-screen">
+      <RightSection />
+    </div>
+  </div>
+  
   );
 };
 

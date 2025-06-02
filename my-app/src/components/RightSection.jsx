@@ -18,11 +18,13 @@ const RightSection = () => {
 
   return (
     <div
-      className="relative w-full h-full flex justify-center items-center bg-cover bg-center overflow-hidden"
+      className="relative w-full min-h-screen flex justify-center items-center bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: `url(${honeycomb})` }}
     >
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-[#1e3f84] opacity-40 z-10" />
 
+      {/* Slideshow images */}
       {images.map((img, index) => (
         <img
           key={index}
@@ -34,6 +36,7 @@ const RightSection = () => {
         />
       ))}
 
+      {/* Dots navigation */}
       <div className="absolute right-5 top-1/2 transform -translate-y-1/2 z-30 flex flex-col gap-2">
         {images.map((_, index) => (
           <span
@@ -46,12 +49,9 @@ const RightSection = () => {
         ))}
       </div>
 
+      {/* Text overlay */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-lg xl:text-xl font-bold text-center z-30 max-w-[80%] leading-relaxed drop-shadow">
-        Need a dream team? I recruit heroes.
-        <br />
-        Chasing a dream job? I'm the hero.
-        <br />
-        Either way — let's make magic happen! ✨🛠️
+        Laedx has your back
       </div>
     </div>
   );
