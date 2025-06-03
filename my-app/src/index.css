@@ -1,30 +1,66 @@
 @import "tailwindcss";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
 /* @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); */
 
 /* Import de Roboto via CSS (alternative si tu préfères ne pas le mettre dans index.html) */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+>>>>>>> 5d09ad31bc96538cdc318f448d5142060a7bc798
+
 :root {
+<<<<<<< HEAD
   font-family: 'Roboto', system-ui, Helvetica, Arial, sans-serif;
+=======
+
+  font-family: system-ui, "Audiowide", Helvetica, Arial, sans-serif;
+
+>>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
   line-height: 1.5;
+
   font-weight: 400;
 
+<<<<<<< HEAD
   /* Supprimé: color-scheme: light dark; */
   color: #111827; /* Texte sombre par défaut */
   background-color: #ffffff; /* Fond blanc */
+=======
+
+
+  color-scheme: light dark;
+
+  color: rgba(255, 255, 255, 0.87);
+>>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
+
+
 
   font-synthesis: none;
+
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
+
   -moz-osx-font-smoothing: grayscale;
+
 }
 
+
+
 body {
+
   margin: 0;
+
   display: flex;
+
   place-items: center;
+
   min-width: 320px;
+
   min-height: 100vh;
+<<<<<<< HEAD
   background-color: #ffffff; /* Forcer fond blanc sur le <body> */
   color: #111827; /* Texte sombre */
 }
@@ -33,3 +69,7 @@ body {
 header {
   font-family: 'Orbitron', sans-serif !important;
 }
+=======
+
+}
+>>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4

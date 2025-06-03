@@ -1,0 +1,560 @@
+/* Base reset and isolation for the component */
+.resume-step-one {
+  all: initial;
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+               Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Upload Container */
+.resume-step-one .upload-container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.resume-step-one .upload-container h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #16204d;
+}
+
+.resume-step-one .drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-step-one .drop-zone.dragging {
+  background-color: #f7f7f7;
+  border-color: #f44336;
+}
+
+.resume-step-one .upload-icon {
+  color: #f44336;
+  margin-bottom: 10px;
+}
+
+.resume-step-one .drop-text {
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: #555;
+}
+
+.resume-step-one .browse-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.resume-step-one .browse-btn:hover {
+  background-color: #e53935;
+}
+
+.resume-step-one .format-text {
+  font-size: 12px;
+  color: #777;
+}
+
+/* File Preview */
+.resume-step-one .file-preview {
+  border: 2px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+}
+
+.resume-step-one .file-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.resume-step-one .file-preview-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.resume-step-one .file-success-icon {
+  margin-right: 8px;
+  color: #34c759;
+}
+
+.resume-step-one .remove-file-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-step-one .remove-file-btn:hover {
+  background-color: #eee;
+  color: #333;
+}
+
+.resume-step-one .file-details {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+}
+
+.resume-step-one .file-icon {
+  margin-right: 15px;
+  color: #4a6ee0;
+}
+
+.resume-step-one .file-info {
+  flex: 1;
+}
+
+.resume-step-one .file-name {
+  margin: 0 0 5px 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  word-break: break-all;
+}
+
+.resume-step-one .file-size {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
+}
+
+.resume-step-one .upload-success-message {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #d4edda;
+  border-radius: 4px;
+  color: #155724;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* WHITE BACKGROUND CONTAINER - From Personal Information to Continue Button */
+.resume-step-one .content-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Personal Information Section */
+.resume-step-one .personal-info-section {
+  margin-bottom: 30px;
+}
+
+.resume-step-one .section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #16204d;
+}
+
+.resume-step-one .personal-info-container {
+  display: flex;
+  gap: 20px;
+}
+
+.resume-step-one .personal-info-title {
+  flex: 1;
+}
+
+.resume-step-one .personal-info-title h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 10px;
+}
+
+.resume-step-one .personal-info-fields {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.resume-step-one .info-field {
+  margin-bottom: 15px;
+}
+
+.resume-step-one .info-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.resume-step-one .required {
+  color: #f44336;
+}
+
+.resume-step-one .info-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.resume-step-one .info-input:focus {
+  border-color: #f44336;
+  outline: none;
+}
+
+/* Phone Input */
+.resume-step-one .phone-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.resume-step-one .country-code-dropdown {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.resume-step-one .phone-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Skills and Languages Section */
+.skills-section, .languages-section {
+  margin-bottom: 30px;
+}
+
+.skills-input-container, .languages-input-container {
+  margin-bottom: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.skills-tags, .languages-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag, .language-tag {
+  display: flex;
+  align-items: center;
+  background-color: #e74c3c;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.remove-tag-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Work Experience Section */
+.resume-step-one .work-experience-section {
+  margin-top: 30px;
+}
+
+.resume-step-one .experience-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.resume-step-one .date-range-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-step-one .date-picker {
+  position: relative;
+  flex: 1;
+}
+
+.resume-step-one .date-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.resume-step-one .calendar-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+}
+
+.resume-step-one .to-text {
+  margin: 0 10px;
+  color: #666;
+}
+
+.resume-step-one .textarea-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 100px;
+  background-color: #fff;
+}
+
+.resume-step-one .remove-item-btn {
+  background-color: #f5f5f5;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.resume-step-one .remove-item-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Calendar Popup */
+.resume-step-one .calendar-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.resume-step-one .calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.resume-step-one .calendar-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.resume-step-one .calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.resume-step-one .calendar-day-header {
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  color: #666;
+  padding: 5px 0;
+}
+
+.resume-step-one .calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.resume-step-one .calendar-day.active:hover {
+  background-color: #f0f0f0;
+}
+
+.resume-step-one .calendar-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.resume-step-one .calendar-footer button {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.resume-step-one .calendar-footer button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Education Section */
+.resume-step-one .education-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resume-step-one .education-title h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #16204d;
+  margin: 0;
+}
+
+.resume-step-one .education-fields {
+  margin-top: 20px;
+}
+
+.resume-step-one .education-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.resume-step-one .institution-dropdown {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* Add Button */
+.resume-step-one .add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.resume-step-one .add-button:hover {
+  background-color: #d32f2f;
+}
+
+.resume-step-one .add-button span {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+/* Action Buttons */
+.resume-step-one .action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.resume-step-one .continue-btn {
+  background-color: #16204d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resume-step-one .continue-btn:hover {
+  background-color: #0A162F;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .resume-step-one .personal-info-container,
+  .resume-step-one .work-experience-section .personal-info-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .resume-step-one .date-range-picker {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .resume-step-one .to-text {
+    margin: 10px 0;
+    align-self: center;
+  }
+}

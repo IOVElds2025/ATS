@@ -23,7 +23,7 @@
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #333;
+  color: #333; /* Ensure text is visible */
 }
 
 .form-grid {
@@ -52,7 +52,7 @@
   display: block;
   margin-bottom: 0.25rem;
   font-size: 0.875rem;
-  color: #4a4a4a;
+  color: #4a4a4a; /* Ensure label text is visible */
 }
 
 .form-group input,
@@ -62,6 +62,8 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 0.875rem;
+  color: #333; /* Ensure input text is visible */
+  background-color: #fff; /* Ensure background is light */
 }
 
 .form-group textarea {
@@ -76,6 +78,7 @@
 
 .responsibility-input input {
   flex-grow: 1;
+  color: #333; /* Ensure text is visible */
 }
 
 .add-button {
@@ -117,7 +120,7 @@
   cursor: pointer;
 }
 
-/* Rest of your CSS stays the same */
+/* Resume Step Two Container */
 .resume-step-two-container {
   display: flex;
   justify-content: center;
@@ -138,7 +141,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 30px;
-  color: #333;
+  color: #333; /* Ensure text is visible */
   text-align: left;
 }
 
@@ -162,7 +165,7 @@
 .section-header h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: #333; /* Ensure text is visible */
   margin: 0;
 }
 
@@ -180,12 +183,12 @@
   font-size: 16px;
   font-weight: 500;
   margin: 0 0 5px 0;
-  color: #333;
+  color: #333; /* Ensure text is visible */
 }
 
 .info-label {
   font-size: 14px;
-  color: #777;
+  color: #777; /* Ensure label text is visible */
   margin: 0;
 }
 
@@ -231,18 +234,18 @@
   font-size: 16px;
   font-weight: 600;
   margin: 0 0 5px 0;
-  color: #333;
+  color: #333; /* Ensure text is visible */
 }
 
 .company-name {
   font-size: 14px;
-  color: #555;
+  color: #555; /* Ensure text is visible */
   margin: 0 0 5px 0;
 }
 
 .date-range {
   font-size: 14px;
-  color: #777;
+  color: #777; /* Ensure text is visible */
   margin: 0;
 }
 
@@ -251,7 +254,8 @@
   gap: 10px;
 }
 
-.edit-button, .delete-button {
+.edit-button,
+.delete-button {
   background: none;
   border: none;
   cursor: pointer;
@@ -271,7 +275,8 @@
   color: #e74c3c;
 }
 
-.edit-button:hover, .delete-button:hover {
+.edit-button:hover,
+.delete-button:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -283,7 +288,7 @@
 .experience-details li {
   margin-bottom: 5px;
   font-size: 14px;
-  color: #555;
+  color: #555; /* Ensure text is visible */
 }
 
 .tags-container {
@@ -306,7 +311,8 @@
   margin-top: 30px;
 }
 
-.back-button, .continue-button {
+.back-button,
+.continue-button {
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
@@ -319,11 +325,11 @@
 .back-button {
   background: none;
   border: 1px solid #ccc;
-  color: #555;
+  color: #555; /* Ensure text is visible */
 }
 
 .continue-button {
-  background-color: #1a1a1a;
+  background-color: #0A162F;
   border: none;
   color: white;
 }

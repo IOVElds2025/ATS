@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 const images = [
@@ -8,6 +9,7 @@ const images = [
 ];
 
 const Login = () => {
+  const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
@@ -31,29 +33,31 @@ const Login = () => {
     e.preventDefault();
     setMessage('');
 
-    const { email, password } = formData;
-    if (!email || !password) {
-      return setMessage('Please fill in both email and password.');
-    }
-
     try {
       const res = await fetch('http://192.168.100.39:8000/api/auth/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        setLoginSuccess(true);
-        console.log('Login successful:', data);
+        // Store token and user data
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('userData', JSON.stringify({
+          email: formData.email,
+          // Add any other user data you receive from the server
+        }));
+        
+        // Navigate to dashboard
+        navigate('/client-dashboard');
       } else {
-        setMessage(data.detail || 'Invalid email or password.');
+        setMessage(data.detail || 'Login failed. Please check your credentials.');
       }
     } catch (error) {
       console.error('Login error:', error);
-      setMessage('Failed to connect to the server.');
+      setMessage('Failed to connect to the server. Please try again.');
     }
   };
 
@@ -87,11 +91,11 @@ const Login = () => {
         <img src="/images/logo1.png" alt="logo" className="logo" />
         {!loginSuccess ? (
           <>
-            <h2 className="form-title">Welcome back !</h2>
+            <h2 className="form-title">Welcome back!</h2>
             <p className="subtitle">Welcome back, please enter your details</p>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label>Email :</label>
+                <label>Email:</label>
                 <input
                   type="email"
                   name="email"
@@ -103,7 +107,7 @@ const Login = () => {
               </div>
 
               <div className="form-group">
-                <label>Password :</label>
+                <label>Password:</label>
                 <input
                   type="password"
                   name="password"
@@ -138,10 +142,15 @@ const Login = () => {
                 </div>
               )}
 
-              <button type="submit" className="submit-btn">login</button>
-              {message && <p className="form-message">{message}</p>}
-              <p className="signin-text">
-                Don’t have an account ? <span className="signin-link">sign up</span>
+              {message && <p className="error-message">{message}</p>}
+
+              <button type="submit" className="submit-btn">Login</button>
+
+              <p className="register-link">
+                Don't have an account?{' '}
+                <span onClick={() => navigate('/auth/register')} className="link">
+                  Register here
+                </span>
               </p>
             </form>
           </>
