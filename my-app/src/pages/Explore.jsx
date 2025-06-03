@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, Grid, List, Star, MapPin, Clock, Zap, TrendingUp, Award, Shield, Eye, MessageCircle, ChevronDown, X, Check, ArrowRight } from "lucide-react";
 import ExploreHeader from "../components/ExploreHeader";
+import Footer from '../components/Footer'; // Adjust the path based on where your Footer component is
+
 
 export default function Explore() {
   const [selectedFilters, setSelectedFilters] = useState(new Set());
@@ -189,7 +191,13 @@ const roles = [
   const clearFilters = () => {
     setSelectedFilters(new Set());
   };
-
+  const filteredTalents = talents.filter((talent) => {
+    const text = `${talent.name} ${talent.role} ${talent.skills.join(" ")}`.toLowerCase();
+    return text.includes(searchTerm.toLowerCase());
+  });
+  
+  
+  
   return (
     
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
@@ -218,11 +226,11 @@ const roles = [
                 
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
                   <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
-                    Discover Elite
+                    Discover Laedx
                   </span>
                   <br />
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                    Tech Talent
+                    Elite Talent
                   </span>
                 </h1>
                 
@@ -236,7 +244,7 @@ const roles = [
                     whileTap={{ scale: 0.98 }}
                     className="relative overflow-hidden group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <span className="relative z-10">Find Talent</span>
+                    <span className="relative z-10">Preview Talent</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </motion.button>
                   <motion.button
@@ -244,7 +252,7 @@ const roles = [
                     whileTap={{ scale: 0.98 }}
                     className="bg-white/90 backdrop-blur-sm border border-gray-200 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md flex items-center space-x-2"
                   >
-                    <span>How It Works</span>
+                    <span>Try Our Smart Matching</span>
                     <ArrowRight className="w-4 h-4" />
                   </motion.button>
                 </div>
@@ -322,49 +330,59 @@ const roles = [
         </div>
       </section>
 
-      {/* Search & Filters - Floating Design */}
-      <section className="relative -mt-10 z-10">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Search & Filters - Premium Floating Panel */}
+      <section className="relative -mt-12 z-20">
+        <div className="max-w-8xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="bg-white rounded-2xl border border-gray-200 shadow-lg p-6"
+            transition={{ delay: 0.8, type: 'spring', stiffness: 100 }}
+            className="bg-white rounded-3xl border border-gray-100 shadow-xl p-8 backdrop-blur-sm bg-opacity-90"
           >
-            {/* Search Bar */}
-            <div className="flex flex-col lg:flex-row gap-4 mb-6">
+            {/* Premium Section Title */}
+            <div className="w-full text-center mb-6">
+              <h2 className="text-3xl font-bold text bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Preview Top Talents
+              </h2>
+              <p className="mt-1 text-gray-500">Discover the perfect match for your project</p>
+            </div>
+            
+            {/* Enhanced Search Bar */}
+            <div className="flex flex-col lg:flex-row gap-5 mb-8">
               <div className="flex-1 relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Search className="text-gray-400 w-5 h-5" />
+                </div>
                 <input
                   type="text"
                   placeholder="Search for talents, skills, or roles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-gray-700 placeholder-gray-500 shadow-sm"
+                  className="w-full pl-12 pr-6 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-300 text-gray-800 placeholder-gray-500 shadow-sm hover:shadow-md"
                 />
               </div>
               <div className="flex gap-3">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.03, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
-                  className="flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 px-5 py-3 rounded-xl transition-all font-medium text-gray-700 shadow-sm"
+                  className="flex items-center space-x-2 bg-gradient-to-b from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 px-5 py-3.5 rounded-xl transition-all duration-300 font-medium text-gray-700 shadow-sm border border-gray-200"
                 >
                   <Filter className="w-4 h-4" />
                   <span>Filters</span>
                   {selectedFilters.size > 0 && (
-                    <span className="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">
+                    <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded-full ml-1">
                       {selectedFilters.size}
                     </span>
                   )}
                 </motion.button>
-                <div className="flex bg-gray-100 rounded-xl p-1 shadow-sm">
+                <div className="flex bg-gray-100 rounded-xl p-1 shadow-sm border border-gray-200">
                   <button
                     onClick={() => setViewMode('grid')}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                       viewMode === 'grid'
-                        ? 'bg-white shadow-md text-blue-600'
-                        : 'text-gray-600 hover:text-gray-800'
+                        ? 'bg-white shadow-md text-blue-600 border border-gray-200'
+                        : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
                     }`}
                   >
                     <Grid className="w-4 h-4" />
@@ -372,10 +390,10 @@ const roles = [
                   </button>
                   <button
                     onClick={() => setViewMode('list')}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                       viewMode === 'list'
-                        ? 'bg-white shadow-md text-blue-600'
-                        : 'text-gray-600 hover:text-gray-800'
+                        ? 'bg-white shadow-md text-blue-600 border border-gray-200'
+                        : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
                     }`}
                   >
                     <List className="w-4 h-4" />
@@ -385,114 +403,126 @@ const roles = [
               </div>
             </div>
 
-            {/* Active Filters */}
+            {/* Active Filters - Premium Chips */}
             {selectedFilters.size > 0 && (
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="text-sm text-gray-500">Active filters:</span>
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <span className="text-sm font-medium text-gray-500">Active filters:</span>
                 {Array.from(selectedFilters).map((filter) => (
                   <motion.button
                     key={filter}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => toggleFilter(filter)}
-                    className="flex items-center space-x-1 bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 transition-all"
+                    className="flex items-center space-x-1 bg-gray-50 hover:bg-gray-100 px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 transition-all duration-200 border border-gray-200 shadow-xs"
                   >
                     <span>{filter}</span>
-                    <X className="w-4 h-4" />
+                    <X className="w-4 h-4 text-gray-500" />
                   </motion.button>
                 ))}
                 <button 
                   onClick={clearFilters}
-                  className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                  className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors flex items-center"
                 >
-                  Clear all
+                  <span>Clear all</span>
+                  <X className="w-4 h-4 ml-1" />
                 </button>
               </div>
             )}
 
-            {/* Tech Stack Filter */}
-            <div className="flex flex-wrap gap-2 mb-4">
+            {/* Tech Stack Filter - Enhanced */}
+            <div className="flex flex-wrap gap-3 mb-6">
               {techStack.map((tech) => (
                 <motion.button
                   key={tech}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => toggleFilter(tech)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 shadow-xs ${
                     selectedFilters.has(tech)
-                      ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-md"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-sm"
+                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-sm border border-gray-200"
                   }`}
                 >
                   {tech}
                 </motion.button>
               ))}
+              {filteredTalents.length === 0 && (
+                <p className="text-gray-500 col-span-full text-center">Aucun résultat trouvé.</p>
+              )}
             </div>
 
-            {/* Sort Options */}
-            <div className="flex items-center justify-between">
+            {/* Sort Options - Premium */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
               <p className="text-gray-600">
-                <span className="font-semibold text-gray-800">1,247</span> professionals matched
+                <span className="font-bold text-gray-900">1,247</span> professionals matched
               </p>
               <div className="flex items-center space-x-3">
-                <span className="text-sm text-gray-500">Sort by:</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-black border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm"
-                >
-                  <option value="match">Best Match</option>
-                  <option value="rate">Hourly Rate</option>
-                  <option value="exp">Experience</option>
-                  <option value="rating">Rating</option>
-                  <option value="availability">Availability</option>
-                </select>
+                <span className="text-sm font-medium text-gray-500">Sort by:</span>
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-2.5 pr-8 text-sm focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
+                  >
+                    <option value="match">Best Match</option>
+                    <option value="rate">Hourly Rate</option>
+                    <option value="exp">Experience</option>
+                    <option value="rating">Rating</option>
+                    <option value="availability">Availability</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                    <ChevronDown className="w-4 h-4 text-gray-400" />
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Filter Sidebar */}
+      {/* Filter Sidebar - Premium */}
       <AnimatePresence>
         {isFilterOpen && (
           <motion.div 
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 30 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 overflow-y-auto"
           >
             <div className="flex min-h-full">
-              {/* Overlay */}
-              <div 
-                className="fixed inset-0 bg-black/50 backdrop-blur-sm" 
+              {/* Premium Overlay */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/40 backdrop-blur-md" 
                 onClick={() => setIsFilterOpen(false)}
               />
               
-              {/* Sidebar */}
-              <div className="relative ml-auto w-full max-w-md bg-white shadow-xl h-screen overflow-y-auto">
+              {/* Premium Sidebar */}
+              <div className="relative ml-auto w-full max-w-md bg-white shadow-2xl h-screen overflow-y-auto">
                 <div className="sticky top-0 bg-white border-b border-gray-200 p-6 z-10">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-gray-900">Filters</h2>
+                    <h2 className="text-2xl font-bold text-gray-900">Refine Results</h2>
                     <button 
                       onClick={() => setIsFilterOpen(false)}
-                      className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="p-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"
                     >
-                      <X className="w-5 h-5 text-gray-500" />
+                      <X className="w-6 h-6 text-gray-500" />
                     </button>
                   </div>
                 </div>
                 
                 <div className="p-6 space-y-8">
                   {filterCategories.map((category) => (
-                    <div key={category.name}>
+                    <div key={category.name} className="border-b border-gray-100 pb-6 last:border-0">
                       <button 
                         onClick={() => setActiveFilterCategory(activeFilterCategory === category.name ? null : category.name)}
                         className="flex items-center justify-between w-full text-left"
                       >
-                        <h3 className="font-medium text-gray-900">{category.name}</h3>
-                        <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${activeFilterCategory === category.name ? 'transform rotate-180' : ''}`} />
+                        <h3 className="font-semibold text-lg text-gray-900">{category.name}</h3>
+                        <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${activeFilterCategory === category.name ? 'transform rotate-180' : ''}`} />
                       </button>
                       
                       {activeFilterCategory === category.name && (
@@ -500,21 +530,21 @@ const roles = [
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="mt-4 space-y-2"
+                          transition={{ duration: 0.25 }}
+                          className="mt-4 space-y-3 pl-1"
                         >
                           {category.options.map((option) => (
                             <div key={option} className="flex items-center">
                               <button
                                 onClick={() => toggleFilter(option)}
-                                className={`w-5 h-5 rounded-md border flex items-center justify-center transition-colors mr-3 ${
+                                className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors duration-200 mr-3 ${
                                   selectedFilters.has(option)
                                     ? 'bg-blue-600 border-blue-600'
                                     : 'border-gray-300 hover:border-blue-500'
                                 }`}
                               >
                                 {selectedFilters.has(option) && (
-                                  <Check className="w-3 h-3 text-white" />
+                                  <Check className="w-4 h-4 text-white" />
                                 )}
                               </button>
                               <span className="text-gray-700">{option}</span>
@@ -527,16 +557,16 @@ const roles = [
                 </div>
                 
                 <div className="sticky bottom-0 bg-white border-t border-gray-200 p-6">
-                  <div className="flex space-x-3">
+                  <div className="flex space-x-4">
                     <button
                       onClick={clearFilters}
-                      className="flex-1 py-3 px-4 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                      className="flex-1 py-3.5 px-6 border border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-300 shadow-sm"
                     >
                       Clear All
                     </button>
                     <button
                       onClick={() => setIsFilterOpen(false)}
-                      className="flex-1 py-3 px-4 bg-blue-600 rounded-lg font-medium text-white hover:bg-blue-700 transition-colors"
+                      className="flex-1 py-3.5 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl font-medium text-white hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                       Show Results
                     </button>
@@ -548,216 +578,278 @@ const roles = [
         )}
       </AnimatePresence>
 
-<section
-  className="py-12 bg-cover bg-center"
-  style={{ backgroundImage: "url('/talent-bg.png')" }}
->
-  <div className="bg-white bg-opacity-90 backdrop-blur-md rounded-xl shadow-lg max-w-8xl mx-auto px-6 py-8">
-    {viewMode === 'grid' ? (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {talents.map((talent, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: idx * 0.05 }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-all cursor-pointer"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                  {talent.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">{talent.name}</h3>
-                  <p className="text-sm text-gray-600">{talent.role}</p>
-                </div>
-              </div>
-              {talent.verified && (
-                <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
-                  Verified
-                </span>
-              )}
-            </div>
-
-            <div className="space-y-2 text-sm mb-4">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Experience:</span>
-                <span className="font-medium">{talent.exp} years</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Rate:</span>
-                <span className="font-medium text-green-600">${talent.rate}/hr</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Match:</span>
-                <span className="font-medium text-blue-600">{talent.match}%</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Status:</span>
-                <span className={`font-medium ${talent.availability === 'Available' ? 'text-green-600' : 'text-orange-600'}`}>
-                  {talent.availability}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-1 mb-4">
-              {talent.skills.slice(0, 3).map((skill, sidx) => (
-                <span key={sidx} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
-                  {skill}
-                </span>
-              ))}
-              {talent.skills.length > 3 && (
-                <span className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
-                  +{talent.skills.length - 3}
-                </span>
-              )}
-            </div>
-
-            <div className="flex space-x-2">
-              <button className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-                View Profile
-              </button>
-              <button className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
-                💬
-              </button>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    ) : (
-      <div className="space-y-4">
-        {talents.map((talent, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: idx * 0.05 }}
-            className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-all"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
-                  {talent.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{talent.name}</h3>
-                  <p className="text-gray-600">{talent.role}</p>
-                  <p className="text-sm text-gray-500">{talent.location}</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-8 text-sm">
-                <div className="text-center">
-                  <div className="font-semibold text-gray-900">{talent.exp} years</div>
-                  <div className="text-gray-500">Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-semibold text-green-600">${talent.rate}/hr</div>
-                  <div className="text-gray-500">Rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-semibold text-blue-600">{talent.match}%</div>
-                  <div className="text-gray-500">Match</div>
-                </div>
-                <div className="text-center">
-                  <div className={`font-semibold ${talent.availability === 'Available' ? 'text-green-600' : 'text-orange-600'}`}>
-                    {talent.availability}
+      {/* Talent Showcase - Premium Section */}
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="bg-white rounded-3xl shadow-xl max-w-8xl mx-auto px-6 py-10 border border-gray-100">
+          {viewMode === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredTalents.map((talent, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: idx * 0.05, type: 'spring' }}
+                  whileHover={{ y: -8, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+                  className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-1"></div>
+                  <div className="flex justify-between items-start mb-5">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        {talent.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 text-lg">{talent.name}</h3>
+                        <p className="text-gray-600">{talent.role}</p>
+                      </div>
+                    </div>
+                    {talent.verified && (
+                      <span className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full flex items-center">
+                        <Check className="w-3 h-3 mr-1" />
+                        Verified
+                      </span>
+                    )}
                   </div>
-                  <div className="text-gray-500">Status</div>
-                </div>
-              </div>
-              <div className="flex space-x-2">
-                <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                  View Profile
-                </button>
-                <button className="border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors">
-                  Contact
-                </button>
-              </div>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {talent.skills.map((skill, sidx) => (
-                <span key={sidx} className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    )}
-  </div>
-</section>
 
+                  <div className="space-y-3 text-sm mb-5">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Experience:</span>
+                      <span className="font-medium">{talent.exp} years</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Rate:</span>
+                      <span className="font-medium text-green-600">${talent.rate}/hr</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Match:</span>
+                      <span className="font-medium text-blue-600">{talent.match}%</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Status:</span>
+                      <span className={`font-medium ${talent.availability === 'Available' ? 'text-green-600' : 'text-orange-600'}`}>
+                        {talent.availability}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {talent.skills.slice(0, 4).map((skill, sidx) => (
+                      <span key={sidx} className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full border border-gray-200">
+                        {skill}
+                      </span>
+                    ))}
+                    {talent.skills.length > 4 && (
+                      <span className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full border border-gray-200">
+                        +{talent.skills.length - 4}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex space-x-3">
+                    <button className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2.5 px-4 rounded-xl text-sm font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-md hover:shadow-lg">
+                      View Profile
+                    </button>
+                    <button className="w-12 h-10 flex items-center justify-center border border-gray-300 rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors duration-200 shadow-sm">
+                      💬
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+              {filteredTalents.length === 0 && (
+                <div className="col-span-full py-12 text-center">
+                  <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                    <Search className="w-10 h-10 text-gray-400" />
+                  </div>
+                  <h3 className="text-xl font-medium text-gray-900 mb-2">No talents found</h3>
+                  <p className="text-gray-500 max-w-md mx-auto">
+                    Try adjusting your search or filter criteria to find what you're looking for.
+                  </p>
+                  <button 
+                    onClick={clearFilters}
+                    className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors duration-200"
+                  >
+                    Clear all filters
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {filteredTalents.map((talent, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: idx * 0.05, type: 'spring' }}
+                  className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-1"></div>
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div className="flex items-center space-x-5">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        {talent.name.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900">{talent.name}</h3>
+                        <p className="text-gray-600">{talent.role}</p>
+                        <p className="text-sm text-gray-500 mt-1">{talent.location}</p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {talent.skills.slice(0, 5).map((skill, sidx) => (
+                            <span key={sidx} className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full border border-gray-200">
+                              {skill}
+                            </span>
+                          ))}
+                          {talent.skills.length > 5 && (
+                            <span className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full border border-gray-200">
+                              +{talent.skills.length - 5}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+                      <div className="text-center">
+                        <div className="font-semibold text-gray-900">{talent.exp} years</div>
+                        <div className="text-gray-500">Experience</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="font-semibold text-green-600">${talent.rate}/hr</div>
+                        <div className="text-gray-500">Rate</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="font-semibold text-blue-600">{talent.match}%</div>
+                        <div className="text-gray-500">Match</div>
+                      </div>
+                      <div className="text-center">
+                        <div className={`font-semibold ${talent.availability === 'Available' ? 'text-green-600' : 'text-orange-600'}`}>
+                          {talent.availability}
+                        </div>
+                        <div className="text-gray-500">Status</div>
+                      </div>
+                    </div>
+                    <div className="flex space-x-3">
+                      <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2.5 rounded-xl font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-md hover:shadow-lg">
+                        View Profile
+                      </button>
+                      <button className="border border-gray-300 px-6 py-2.5 rounded-xl hover:bg-gray-50 transition-colors duration-200 shadow-sm">
+                        Contact
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+              {filteredTalents.length === 0 && (
+                <div className="py-12 text-center">
+                  <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                    <Search className="w-10 h-10 text-gray-400" />
+                  </div>
+                  <h3 className="text-xl font-medium text-gray-900 mb-2">No talents found</h3>
+                  <p className="text-gray-500 max-w-md mx-auto">
+                    Try adjusting your search or filter criteria to find what you're looking for.
+                  </p>
+                  <button 
+                    onClick={clearFilters}
+                    className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors duration-200"
+                  >
+                    Clear all filters
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
                       
                          
                       {/* Smart Matching Section */}
-<section
-  
->
-  <div className="max-w-7xl mx-auto px-4 text-center">
-    {/* Title */}
-    <h2 className="text-3xl font-bold text-gray-800 mb-10">Try Our Smart Matching</h2>
+<section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {/* Title with subtle animation */}
+    <h2 className="text-4xl font-bold text-gray-900 mb-12 relative inline-block">
+      Try Our Smart Matching
+      <span className="absolute -bottom-2 left-0 right-0 mx-auto w-16 h-1 bg-blue-500 rounded-full"></span>
+    </h2>
 
-    {/* Search + Role Toggle */}
-    <div className="bg-[#e6edff] border border-blue-200 rounded-xl shadow-lg p-6 mb-12 max-w-5xl mx-auto relative">
-      <label className="block text-lg font-medium text-gray-700 mb-2 text-left">
-        What are you looking for ...
-      </label>
+    {/* Search + Role Toggle - Enhanced card */}
+    <div className="bg-white border border-blue-100 rounded-2xl shadow-xl p-8 mb-16 max-w-5xl mx-auto relative transition-all duration-300 hover:shadow-2xl">
+      <div className="flex items-center justify-between mb-6">
+        <label className="text-xl font-semibold text-gray-800">
+          What are you looking for...
+        </label>
+        
+        {/* Animated toggle button */}
+        <button
+          onClick={() => setShowRoles((prev) => !prev)}
+          className="flex items-center space-x-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-full transition-all duration-200"
+        >
+          <span className="text-blue-600 font-medium">
+            {showRoles ? 'Hide roles' : 'Filter by role'}
+          </span>
+          <svg
+            className={`w-5 h-5 text-blue-600 transform transition-transform duration-300 ${
+              showRoles ? "rotate-180" : "rotate-0"
+            }`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
 
-      {/* Search Input */}
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="e.g. React, Remote, AI/ML..."
-        className="w-full px-4 py-3 mb-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-gray-800 text-base"
-      />
-
-      {/* Flèche centrée */}
-      <button
-        onClick={() => setShowRoles((prev) => !prev)}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
-      >
+      {/* Search Input with focus animation */}
+      <div className="relative mb-6">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="e.g. React, Remote, AI/ML..."
+          className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-300 text-gray-800 text-lg transition-all duration-200 shadow-sm"
+        />
         <svg
-          className={`w-6 h-6 text-gray-500 transform transition-transform duration-300 ${
-            showRoles ? "rotate-180" : "rotate-0"
-          }`}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
-      </button>
+      </div>
 
-      {/* Liste de rôles affichée si ouvert */}
+      {/* Role chips with better animation */}
       {showRoles && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {roles.map((role) => (
-            <button
-              key={role}
-              onClick={() => {
-                const newSet = new Set(selectedRoles);
-                newSet.has(role) ? newSet.delete(role) : newSet.add(role);
-                setSelectedRoles(newSet);
-              }}
-              className={`px-4 py-2 rounded-full font-semibold transition ${
-                selectedRoles.has(role)
-                  ? "bg-blue-600 text-white"
-                  : "bg-blue-100 text-blue-800 hover:bg-blue-200"
-              }`}
-            >
-              {role}
-            </button>
-          ))}
+        <div className="mt-6 pt-6 border-t border-gray-100">
+          <h3 className="text-lg font-medium text-gray-700 mb-4 text-left">Select roles:</h3>
+          <div className="flex flex-wrap gap-3">
+            {roles.map((role) => (
+              <button
+                key={role}
+                onClick={() => {
+                  const newSet = new Set(selectedRoles);
+                  newSet.has(role) ? newSet.delete(role) : newSet.add(role);
+                  setSelectedRoles(newSet);
+                }}
+                className={`px-5 py-2.5 rounded-full font-medium transition-all duration-200 transform hover:scale-105 ${
+                  selectedRoles.has(role)
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                {role}
+                {selectedRoles.has(role) && (
+                  <span className="ml-1.5">✓</span>
+                )}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
 
-    {/* Talent Cards filtrées dynamiquement */}
+    {/* Talent Cards with hover effects */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {talents
         .filter((talent) => {
@@ -777,36 +869,71 @@ const roles = [
           return matchesSearch && matchesRole;
         })
         .map((talent, idx) => (
-          <div key={idx} className="bg-white p-6 rounded-xl shadow-lg border text-left">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-semibold text-gray-800">{talent.role}</h3>
-              <span className="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+          <div 
+            key={idx} 
+            className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-left transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+          >
+            <div className="flex justify-between items-start mb-5">
+              <h3 className="text-xl font-bold text-gray-900">{talent.role}</h3>
+              <span className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-semibold">
                 {talent.match}% Match
               </span>
             </div>
-            <p className="text-sm text-gray-600 mb-2">{talent.exp}+ years experience</p>
-            <p className="font-medium text-gray-700 mb-2">Skills</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {talent.skills.slice(0, 4).map((skill, i) => (
-                <span key={i} className="bg-yellow-100 text-yellow-800 text-sm px-3 py-1 rounded-full">
-                  {skill}
-                </span>
-              ))}
+            
+            <p className="text-sm text-gray-500 mb-3 flex items-center">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              {talent.exp}+ years experience
+            </p>
+            
+            <div className="mb-5">
+              <p className="font-semibold text-gray-800 mb-2">Top Skills</p>
+              <div className="flex flex-wrap gap-2">
+                {talent.skills.slice(0, 4).map((skill, i) => (
+                  <span key={i} className="bg-yellow-50 text-yellow-700 text-xs px-3 py-1.5 rounded-full font-medium border border-yellow-100">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-            <ul className="text-sm text-gray-600 mb-4 space-y-1">
-              <li>🌍 {talent.location}</li>
-              <li>
-                {talent.availability === "Available"
-                  ? "✅ Available immediately"
-                  : `⏳ ${talent.availability}`}
+            
+            <ul className="text-sm text-gray-600 mb-6 space-y-2">
+              <li className="flex items-center">
+                <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                {talent.location}
               </li>
-              <li>🕒 Full-time</li>
+              <li className="flex items-center">
+                <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {talent.availability === "Available" ? "Available immediately" : talent.availability}
+              </li>
+              <li className="flex items-center">
+                <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                Full-time
+              </li>
             </ul>
-            <div className="text-sm font-semibold text-gray-700 mb-2">Match Breakdown</div>
-            <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden mb-4">
-              <div className="h-full bg-blue-500" style={{ width: `${talent.match}%` }}></div>
+            
+            <div className="mb-5">
+              <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
+                <span>Match Breakdown</span>
+                <span>{talent.match}%</span>
+              </div>
+              <div className="h-2.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full" 
+                  style={{ width: `${talent.match}%` }}
+                ></div>
+              </div>
             </div>
-            <button className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
+            
+            <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 font-medium shadow-md hover:shadow-lg">
               View Full Profile
             </button>
           </div>
@@ -815,43 +942,9 @@ const roles = [
   </div>
 </section>
 
-                      
-                            {/* CTA Section */}
-                            <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
-                              <div className="max-w-7xl mx-auto px-6 text-center">
-                                <motion.div
-                                  initial={{ opacity: 0, y: 30 }}
-                                  whileInView={{ opacity: 1, y: 0 }}
-                                  transition={{ duration: 0.8 }}
-                                  viewport={{ once: true }}
-                                  className="space-y-8"
-                                >
-                                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                                    Ready to build your dream team?
-                                  </h2>
-                                  <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-                                    Get matched with pre-vetted talent in 24 hours or less
-                                  </p>
-                                  <div className="flex flex-wrap gap-4 justify-center">
-                                    <motion.button
-                                      whileHover={{ scale: 1.05 }}
-                                      whileTap={{ scale: 0.98 }}
-                                      className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300"
-                                    >
-                                      Get Started
-                                    </motion.button>
-                                    <motion.button
-                                      whileHover={{ scale: 1.05 }}
-                                      whileTap={{ scale: 0.98 }}
-                                      className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300"
-                                    >
-                                      Talk to an Expert
-                                    </motion.button>
-                                  </div>
-                                </motion.div>
-                              </div>
-                            </section>
-                          </div>
-                        );
-                      }
+<Footer />
+
+  </div>
+      );
+       }
 

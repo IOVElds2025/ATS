@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Register from './pages/register';
 import Login from './pages/login';
 import UploadResumePage from './pages/UploadResumePage';
 import Recruiter from './pages/Recruiter';
-import Explore from './pages/Explore'; // Assurez-vous que ce fichier existe
+import Explore from './pages/Explore';
 import ClientDashboard from './pages/ClientDashboard';
 import ExploreHeader from './components/ExploreHeader';
+import HiveLandingPage from './pages/hivelandingpage';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/dashboard" element={<ClientDashboard />} />
         <Route path="/exploreheader" element={<ExploreHeader />} />
-        <Route path="/" element={<Recruiter />} />
+        <Route path="/hivelandingpage" element={<HiveLandingPage />} />  
       </Routes>
     </div>
   );
