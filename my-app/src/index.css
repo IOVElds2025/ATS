@@ -1,13 +1,17 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); */
 
+/* Import de Roboto via CSS (alternative si tu préfères ne pas le mettre dans index.html) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  /* Supprimé: color-scheme: light dark; */
+  color: #111827; /* Texte sombre par défaut */
+  background-color: #ffffff; /* Fond blanc */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,6 +25,11 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #ffffff; /* Forcer fond blanc sur le <body> */
+  color: #111827; /* Texte sombre */
 }
 
-
+/* Appliquer Orbitron uniquement au header */
+header {
+  font-family: 'Orbitron', sans-serif !important;
+}

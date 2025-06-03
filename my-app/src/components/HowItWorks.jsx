@@ -1,154 +1,189 @@
-import React from 'react';
-import { FaUserPlus, FaSearch, FaPaperPlane } from 'react-icons/fa';
+import React from "react";
 
-export default function HowItWorks() {
+const HowItWorks = () => {
   const steps = [
     {
-      title: 'Create Account',
-      desc: 'Sign up with your email and create a professional profile.',
-      icon: <FaUserPlus size={36} />,
+      title: "Create Your Profile",
+      description: "Sign up and complete your profile to start your job journey.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          width="24"
+          height="24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
+      ),
     },
     {
-      title: 'Search Jobs',
-      desc: 'Browse listings or use filters to find the perfect job.',
-      icon: <FaSearch size={36} />,
+      title: "Browse Opportunities",
+      description: "Explore jobs tailored to your skills and preferences.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          width="24"
+          height="24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 4h13M8 9h13M8 14h13M8 19h13M3 4h.01M3 9h.01M3 14h.01M3 19h.01"
+          />
+        </svg>
+      ),
     },
     {
-      title: 'Apply Fast',
-      desc: 'Send applications in one click and get noticed quickly.',
-      icon: <FaPaperPlane size={36} />,
+      title: "Apply & Get Hired",
+      description: "Send applications and get hired by top employers.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          width="24"
+          height="24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+      ),
     },
   ];
 
   return (
-    <section className="how-it-works">
+    <section className="how-it-works-section">
       <style>{`
-        .how-it-works {
-          position: relative;
-          background-color: #000000; /* pure black background */
-          color: white;
-          padding: 100px 20px;
-          font-family: 'Poppins', sans-serif;
+        :root {
+          --white: #fff;
+          --primary-red: #cc0000;
+          --primary-blue: #0074d9;
+          --text-dark: #333;
+        }
+
+        .how-it-works-section {
+          background: var(--white);
+          padding: 4rem 1.5rem;
+          color: var(--text-dark);
+        }
+
+        .how-title {
+          font-size: clamp(1.8rem, 4vw, 2.4rem);
+          font-weight: 800;
           text-align: center;
-          overflow: hidden;
-          z-index: 1;
+          margin-bottom: 3rem;
+          color: #002855; /* bleu foncé */
+          transition: all 0.4s ease;
+          cursor: pointer;
         }
 
-        /* Hive background with white + subtle red lines */
-        .how-it-works::before {
-          content: "";
-          position: absolute;
-          top: -100px; left: -100px; right: -100px; bottom: -100px;
-          background-image: 
-            radial-gradient(circle at center, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-            url("data:image/svg+xml,%3Csvg width='80' height='70' viewBox='0 0 80 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.15' stroke-width='2'%3E%3Cpolygon points='40,0 80,20 80,50 40,70 0,50 0,20'/%3E%3C/g%3E%3C/svg%3E"),
-            url("data:image/svg+xml,%3Csvg width='80' height='70' viewBox='0 0 80 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ef4444' stroke-opacity='0.12' stroke-width='2'%3E%3Cpolygon points='40,0 80,20 80,50 40,70 0,50 0,20'/%3E%3C/g%3E%3C/svg%3E");
-          background-size: 100px 90px;
-          background-repeat: repeat;
-          animation: driftHive 70s linear infinite;
-          z-index: 0;
-          opacity: 0.35;
-        }
-
-        @keyframes driftHive {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(-45%, -25%); }
-        }
-
-        .how-it-works h2 {
-          font-size: 3rem;
-          font-weight: 900;
-          margin-bottom: 60px;
-          background: linear-gradient(90deg, #ef4444, #ffffff);
-          background-size: 200% auto;
+        .how-title:hover {
+          background: linear-gradient(270deg, #0074d9, #00aaff, #0074d9);
+          background-size: 400% 400%;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: shimmer 6s linear infinite;
-          position: relative;
-          z-index: 1;
+          animation: gradientMove 5s ease infinite;
         }
 
-        @keyframes shimmer {
-          0% { background-position: 0% center; }
-          100% { background-position: 200% center; }
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
 
         .steps-container {
-          position: relative;
-          z-index: 1;
           display: flex;
+          gap: 2rem;
           flex-wrap: wrap;
-          gap: 40px;
           justify-content: center;
-          max-width: 1200px;
-          margin: 0 auto;
         }
 
-        .step-box {
-          background: #111111; /* very dark black */
-          border-radius: 20px;
-          border: 2px solid #ef4444; /* red border */
-          border-left: 8px solid #ef4444;
-          padding: 30px 24px;
-          max-width: 320px;
-          text-align: left;
-          box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          cursor: default;
-          color: white;
-          user-select: none;
-          position: relative;
-          overflow: hidden;
+        .step-card {
+          background: var(--white);
+          color: var(--text-dark);
+          border: 2px solid var(--primary-blue);
+          padding: 2rem;
+          border-radius: 1rem;
+          box-shadow: 0 0 15px rgba(0, 116, 217, 0.15);
+          transition: all 0.3s ease;
+          flex: 1 1 280px;
+          max-width: 350px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
         }
 
-        .step-box:hover {
-          transform: translateY(-10px) scale(1.04);
-          box-shadow:
-            0 0 35px rgba(239, 68, 68, 1),
-            inset 0 0 30px rgba(239, 68, 68, 0.85);
+        .step-card:hover {
+          box-shadow: 0 0 25px rgba(0, 116, 217, 0.4), 0 0 10px rgba(0, 116, 217, 0.2);
+          transform: translateY(-6px);
         }
 
-        .step-icon {
-          color: #ef4444;
-          margin-bottom: 20px;
+        .step-card h3 {
+          font-size: 1.4rem;
+          color: var(--primary-red);
+          margin-bottom: 0.5rem;
           display: flex;
           align-items: center;
           justify-content: center;
+          gap: 0.5rem;
         }
 
-        .step-title {
-          font-size: 1.4rem;
-          font-weight: 700;
-          margin-bottom: 12px;
-          color: #ffffff;
+        .step-card p {
+          font-size: 1.05rem;
+          color: #555;
+          line-height: 1.4;
         }
 
-        .step-desc {
-          font-size: 1rem;
-          color: #d4d4d4;
-          line-height: 1.6;
+        .icon {
+          stroke: var(--primary-red);
+          stroke-width: 2;
+          flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
-          .how-it-works h2 {
-            font-size: 2.4rem;
+          .steps-container {
+            flex-direction: column;
+            align-items: center;
           }
-          .step-box {
+
+          .step-card {
             max-width: 100%;
           }
         }
       `}</style>
 
-      <h2>How It Works</h2>
+      <h2 className="how-title">How It Works</h2>
+
       <div className="steps-container">
         {steps.map((step, index) => (
-          <div key={index} className="step-box">
-            <div className="step-icon">{step.icon}</div>
-            <div className="step-title">{step.title}</div>
-            <div className="step-desc">{step.desc}</div>
+          <div key={index} className="step-card">
+            <h3>{step.icon} {step.title}</h3>
+            <p>{step.description}</p>
           </div>
         ))}
       </div>
     </section>
   );
-}
+};
+
+export default HowItWorks;

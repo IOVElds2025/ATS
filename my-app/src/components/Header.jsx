@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import "fontsource/audiowide";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Services");
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isLogin = location.pathname === "/auth/login";
+  const isRegister = location.pathname === "/auth/register";
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -61,22 +68,22 @@ const Header = () => {
 
   return (
     <motion.nav
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         isScrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
+      style={{ height: 48 }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a
-          href="/"
-          className={`text-2xl tracking-wide flex items-center transition-colors duration-300 font-[Audiowide] ${
-            isScrolled ? "text-gray-900" : "text-white"
-          }`}
-        >
-          Hive<span className="text-[#e53935]">X</span>perience
-        </a>
+      <div className="absolute inset-0 bg-cover bg-center pointer-events-none transition-opacity duration-300" />
+
+      <div className="relative z-10 flex items-center justify-between w-full h-full text-lg font-semibold tracking-wide">
+        <div className="absolute left-6 top-1/2 -translate-y-1/2 flex gap-6">
+          <Link to="/" className="text-[#F65A4E] text-2xl font-bold">
+            Hive<span className="text-black">X</span>perience
+          </Link>
+        </div>
 
         <div className="hidden md:flex items-center space-x-10 relative">
           {navItems.map((item) =>
@@ -157,6 +164,33 @@ const Header = () => {
               </a>
             )
           )}
+        </div>
+
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex gap-4">
+          <Link
+            to="/auth/login"
+            className={`px-4 py-1 rounded transition duration-300 border border-transparent text-lg font-semibold ${
+              isLogin
+                ? "text-white bg-[#F65A4E] border-[#F65A4E]"
+                : isScrolled
+                ? "text-black hover:text-[#F65A4E]"
+                : "text-white hover:text-[#F65A4E]"
+            }`}
+          >
+            Login
+          </Link>
+          <Link
+            to="/auth/register"
+            className={`px-4 py-1 rounded transition duration-300 border border-transparent text-lg font-semibold ${
+              isRegister
+                ? "text-white bg-[#F65A4E] border-[#F65A4E]"
+                : isScrolled
+                ? "text-black hover:text-[#F65A4E]"
+                : "text-white hover:text-[#F65A4E]"
+            }`}
+          >
+            Register
+          </Link>
         </div>
       </div>
     </motion.nav>
