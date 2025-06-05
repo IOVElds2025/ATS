@@ -1,137 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
-
-const Explore = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState(null);
-
-  const techStacks = [
-    { name: 'React', color: 'bg-cyan-500 text-white' },
-    { name: 'NodeJS', color: 'bg-green-600 text-white' },
-    { name: 'Python', color: 'bg-blue-600 text-white' },
-    { name: 'Docker', color: 'bg-blue-700 text-white' },
-    { name: 'TypeScript', color: 'bg-blue-800 text-white' },
-    { name: 'PostgreSQL', color: 'bg-blue-900 text-white' }
-  ];
-
-  const jobCards = [
-    {
-      id: 1,
-      title: 'Senior Frontend Developer',
-      company: 'TechCorp',
-      experience: '5+ years experience',
-      type: 'Full-time',
-      skills: ['React', 'TypeScript', 'GraphQL'],
-      skillsMatch: 85,
-      experienceMatch: 92,
-      featured: true,
-      badgeColor: 'bg-orange-500'
-    },
-    {
-      id: 2,
-      title: 'Full Stack Developer',
-      company: 'StartupXYZ',
-      experience: '3+ years experience',
-      type: 'Full-time',
-      skills: ['Node.js', 'React', 'MongoDB'],
-      skillsMatch: 78,
-      experienceMatch: 88,
-      featured: true,
-      badgeColor: 'bg-blue-600'
-    },
-    {
-      id: 3,
-      title: 'Senior Frontend Developer',
-      company: 'InnovateLabs',
-      experience: '4+ years experience',
-      type: 'Remote',
-      skills: ['Vue.js', 'Python', 'AWS'],
-      skillsMatch: 91,
-      experienceMatch: 95,
-      featured: true,
-      badgeColor: 'bg-orange-500'
-    },
-    {
-      id: 4,
-      title: 'Full Stack Developer',
-      company: 'DevStudio',
-      experience: '2+ years experience',
-      type: 'Hybrid',
-      skills: ['Angular', 'Java', 'Spring'],
-      skillsMatch: 82,
-      experienceMatch: 86,
-      featured: true,
-      badgeColor: 'bg-blue-600'
-    },
-    {
-      id: 5,
-      title: 'Backend Developer',
-      company: 'CloudTech',
-      experience: '4+ years experience',
-      type: 'Remote',
-      skills: ['Python', 'Django', 'PostgreSQL'],
-      skillsMatch: 88,
-      experienceMatch: 90,
-      featured: true,
-      badgeColor: 'bg-green-600'
-    },
-    {
-      id: 6,
-      title: 'DevOps Engineer',
-      company: 'ScaleUp',
-      experience: '3+ years experience',
-      type: 'Full-time',
-      skills: ['Docker', 'Kubernetes', 'AWS'],
-      skillsMatch: 93,
-      experienceMatch: 87,
-      featured: true,
-      badgeColor: 'bg-purple-600'
-    },
-    {
-      id: 7,
-      title: 'Mobile Developer',
-      company: 'AppCorp',
-      experience: '2+ years experience',
-      type: 'Contract',
-      skills: ['React Native', 'Swift', 'Kotlin'],
-      skillsMatch: 79,
-      experienceMatch: 84,
-      featured: true,
-      badgeColor: 'bg-indigo-600'
-    },
-    {
-      id: 8,
-      title: 'Data Scientist',
-      company: 'DataLabs',
-      experience: '5+ years experience',
-      type: 'Full-time',
-      skills: ['Python', 'TensorFlow', 'SQL'],
-      skillsMatch: 86,
-      experienceMatch: 94,
-      featured: true,
-      badgeColor: 'bg-pink-600'
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-      {/* Geometric background pattern */}
-      <div className="fixed inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}></div>
-      </div>
-
-      {/* Header */}
-      <header className="relative bg-white shadow-sm border-b sticky top-0 z-50">
-        <div className="w-full px-2 sm:px-4">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <span className="text-xl sm:text-2xl font-bold text-gray-900">Hive</span>
-              <span className="text-xl sm:text-2xl font-bold text-red-500">X</span>
-              <span className="text-xl sm:text-2xl font-bold text-gray-900">perience</span>
-=======
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, Grid, List, Star, MapPin, Clock, Zap, TrendingUp, Award, Shield, Eye, MessageCircle, ChevronDown, X, Check, ArrowRight } from "lucide-react";
@@ -1012,7 +878,6 @@ const roles = [
               <span className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-semibold">
                 {talent.match}% Match
               </span>
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
             </div>
             
             <p className="text-sm text-gray-500 mb-3 flex items-center">
@@ -1072,12 +937,7 @@ const roles = [
               View Full Profile
             </button>
           </div>
-<<<<<<< HEAD
-        </div>
-      </div>
-=======
         ))}
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
     </div>
   </div>
 </section>

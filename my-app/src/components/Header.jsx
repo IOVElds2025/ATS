@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, Link  } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
-<<<<<<< HEAD
-import { Link, useLocation } from "react-router-dom";
-=======
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
 
 const Header = () => {
   const location = useLocation();
@@ -79,16 +76,6 @@ const Header = () => {
       }`}
       style={{ height: 48 }}
     >
-<<<<<<< HEAD
-      <div className="absolute inset-0 bg-cover bg-center pointer-events-none transition-opacity duration-300" />
-
-      <div className="relative z-10 flex items-center justify-between w-full h-full text-lg font-semibold tracking-wide">
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 flex gap-6">
-          <Link to="/" className="text-[#F65A4E] text-2xl font-bold">
-            Hive<span className="text-black">X</span>perience
-          </Link>
-        </div>
-=======
       <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between h-12">
         <a
           href="/"
@@ -98,7 +85,6 @@ const Header = () => {
         >
           Hive<span className="text-[#e53935]">X</span>perience
         </a>
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
 
         <div className="hidden md:flex items-center space-x-10 relative">
           {navItems.map((item) =>

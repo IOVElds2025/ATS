@@ -18,14 +18,10 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.1",
-<<<<<<< HEAD
-    "styled-components": "^6.1.18"
-=======
     "react-shadow": "^20.6.0",
     "swiper": "^11.2.8",
     "three": "^0.177.0",
     "vanta": "^0.5.24"
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

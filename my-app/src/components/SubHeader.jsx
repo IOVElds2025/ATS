@@ -1,20 +1,4 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
-
-const SubHeader = () => {
-  const location = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-=======
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -39,25 +23,18 @@ const SubHeader = () => {
       y: e.clientY - rect.top,
     });
   };
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
 
   return (
     <motion.nav
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-<<<<<<< HEAD
-=======
       onMouseMove={handleMouseMove}
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
       className={`fixed top-12 left-0 right-0 z-40 transition-colors duration-300 border-t border-gray-100/10 ${
         isScrolled ? "bg-gray-500 shadow-md" : "bg-transparent"
       }`}
       style={{ height: 40 }}
     >
-<<<<<<< HEAD
-      <div className="relative z-10 flex items-center justify-between w-full h-full text-lg font-semibold tracking-wide">
-=======
       {/* Spotlight background */}
       <div
         className={`absolute inset-0 bg-cover bg-center pointer-events-none transition-opacity duration-300 ${
@@ -74,7 +51,6 @@ const SubHeader = () => {
       <div className="relative z-10 flex items-center justify-between w-full h-full text-lg font-semibold tracking-wide">
 
         {/* Far Left */}
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
         <div className="absolute left-6 top-1/2 -translate-y-1/2 flex gap-6">
           {[
             { path: "/find-job", label: "Find Job" },
@@ -98,8 +74,6 @@ const SubHeader = () => {
               )}
             </div>
           ))}
-<<<<<<< HEAD
-=======
         </div>
 
         {/* Far Right */}
@@ -128,7 +102,6 @@ const SubHeader = () => {
           >
             Register
           </Link>
->>>>>>> 6ed996d0d2c590d2a4d730d3e0d90eecae106db4
         </div>
       </div>
     </motion.nav>
