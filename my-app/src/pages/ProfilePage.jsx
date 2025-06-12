@@ -15,7 +15,7 @@ import CertificationsSection from "../components/Profile/CertificationsSection";
 const ProfilePage = () => {
   return (
     <div className="profile-container">
-      {/* Ajout du DashHeader et du Sidebar */}
+      {/* Ajout du Dashheader et du Sidebar */}
       <DashHeader />
       <Sidebar />
 

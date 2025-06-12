@@ -77,32 +77,32 @@ const SubHeader = () => {
         </div>
 
         {/* Far Right */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex gap-4">
-          <Link
-            to="/auth/login"
-            className={`px-4 py-1 rounded transition duration-300 border border-transparent text-lg font-semibold ${
-              isLogin
-                ? "text-white bg-[#F65A4E] border-[#F65A4E]"
-                : isScrolled
-                ? "text-black hover:text-[#F65A4E]"
-                : "text-white hover:text-[#F65A4E]"
-            }`}
-          >
-            Login
-          </Link>
-          <Link
-            to="/auth/register"
-            className={`px-4 py-1 rounded transition duration-300 border border-transparent text-lg font-semibold ${
-              isRegister
-                ? "text-white bg-[#F65A4E] border-[#F65A4E]"
-                : isScrolled
-                ? "text-black hover:text-[#F65A4E]"
-                : "text-white hover:text-[#F65A4E]"
-            }`}
-          >
-            Register
-          </Link>
-        </div>
+        {/*<div className="absolute right-6 top-1/2 -translate-y-1/2 flex gap-4">*/}
+        {/*  <Link*/}
+        {/*    to="/auth/login"*/}
+        {/*    className={`px-4 py-1 rounded transition duration-300 border border-transparent text-lg font-semibold ${*/}
+        {/*      isLogin*/}
+        {/*        ? "text-white bg-[#F65A4E] border-[#F65A4E]"*/}
+        {/*        : isScrolled*/}
+        {/*        ? "text-black hover:text-[#F65A4E]"*/}
+        {/*        : "text-white hover:text-[#F65A4E]"*/}
+        {/*    }`}*/}
+        {/*  >*/}
+        {/*    Login*/}
+        {/*  </Link>*/}
+        {/*  <Link*/}
+        {/*    to="/auth/register"*/}
+        {/*    className={`px-4 py-1 rounded transition duration-300 border border-transparent text-lg font-semibold ${*/}
+        {/*      isRegister*/}
+        {/*        ? "text-white bg-[#F65A4E] border-[#F65A4E]"*/}
+        {/*        : isScrolled*/}
+        {/*        ? "text-black hover:text-[#F65A4E]"*/}
+        {/*        : "text-white hover:text-[#F65A4E]"*/}
+        {/*    }`}*/}
+        {/*  >*/}
+        {/*    Register*/}
+        {/*  </Link>*/}
+        {/*</div>*/}
       </div>
     </motion.nav>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Briefcase, Star, Search, ChevronDown } from 'lucide-react';
 import backgroundImage from '../assets/charachters/feature-background.png';
 import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
 
 const ClientDashboard = () => {
   const [selectedType, setSelectedType] = useState(null);
@@ -14,6 +15,7 @@ const ClientDashboard = () => {
   const [matchingProfiles, setMatchingProfiles] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   useEffect(() => {
     setIsPageLoaded(true);
@@ -58,11 +60,25 @@ const ClientDashboard = () => {
   };
 
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1">
-        <div className="min-h-screen bg-cover bg-center bg-no-repeat relative overflow-hidden"
-             style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="flex min-h-screen relative">
+      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
+      <div className="flex-1 flex flex-col bg-cover bg-center bg-no-repeat relative overflow-hidden" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <Header
+          userName="Ayoub Rahmoun"
+          onSidebarToggle={() => setSidebarOpen((open) => !open)}
+          sidebarOpen={sidebarOpen}
+          actionButtons={
+            <>
+              <button className="bg-white text-blue-800 font-semibold px-5 py-2 rounded-lg shadow hover:bg-blue-50 mr-3">Post a Job</button>
+              <button className="bg-blue-100 text-blue-800 font-semibold px-5 py-2 rounded-lg shadow hover:bg-blue-200">View All Applications</button>
+            </>
+          }
+        />
+        {/* Overlay for mobile when sidebar is open */}
+        {sidebarOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-30 z-20 md:hidden" onClick={() => setSidebarOpen(false)}></div>
+        )}
+        <div className="flex-1 min-h-0 overflow-y-auto">
           <div className="min-h-screen bg-white/80 py-8 px-4">
             <div className={`max-w-4xl mx-auto transition-all duration-1000 transform ${isPageLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <div className="text-center mb-12 relative">

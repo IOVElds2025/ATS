@@ -8,7 +8,7 @@ fontImport.innerHTML = `
 `;
 document.head.appendChild(fontImport);
 
-const DashHeader = () => {
+const Dashheader = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -117,4 +117,4 @@ const DashHeader = () => {
   );
 };
 
-export default DashHeader;
+export default Dashheader;
