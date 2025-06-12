@@ -28,16 +28,24 @@ const LoginForm = ({setOpen}) => {
 			const res = await fetch(URL+'auth/login/', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
+				credentials: "include",
 				body: JSON.stringify(formData),
 			});
-
+			
 			const data = await res.json();
 			console.log('data : ', data);
+			console.log('cookies1 : ', res.headers.getSetCookie());
+			console.log('cookies2 : ', data['jwt_access_token']);
+			console.log('cookies3 : ', res.headers.get('jwt_access_token'));
+
+			// document.cookie = 'jwt_access_token='+data['jwt_access_token'];
+			// document.cookie = 'jwt_refresh_token='+data['jwt_refresh_token'];
+			// document.cookie = 'csrftoken='+data['csrftoken'];
 
 			if (res.ok) {
 				console.log('succes');
 				// setOpen(false);
-				navigate('/');
+				navigate('/upload-resume/preview-info');
 			} else {				
 				setMessage(data.detail || 'Login failed. Please check your credentials.');
 			}

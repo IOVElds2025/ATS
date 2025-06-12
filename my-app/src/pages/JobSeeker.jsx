@@ -1,6 +1,5 @@
 // src/pages/Jobseeker.jsx
 import React from "react";
-import "./JobSeeker.css"; // Import local CSS
 import Header from "../components/Header";
 import SubHeader from "../components/SubHeader";
 import JobseekerHero from "../components/JobseekerHero";

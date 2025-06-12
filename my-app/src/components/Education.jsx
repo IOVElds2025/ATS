@@ -58,8 +58,8 @@ const Education = ({ education = [], onChange }) => {
               <input
                 type="text"
                 required
-                value={edu[1] || ''}
-                onChange={(e) => updateEducation(index, 1, e.target.value)}
+                value={edu[2] || ''}
+                onChange={(e) => updateEducation(index, 2, e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
               />
             </div>
@@ -70,8 +70,8 @@ const Education = ({ education = [], onChange }) => {
                   type="text"
                   required
                   placeholder="DD/MM/YYYY"
-                  value={edu[2] || ''}
-                  onChange={(e) => updateEducation(index, 2, e.target.value)}
+                  value={edu[3] || ''}
+                  onChange={(e) => updateEducation(index, 3, e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
                 />
               </div>
@@ -81,8 +81,8 @@ const Education = ({ education = [], onChange }) => {
                   type="text"
                   required
                   placeholder="DD/MM/YYYY"
-                  value={edu[3] || ''}
-                  onChange={(e) => updateEducation(index, 3, e.target.value)}
+                  value={edu[4] || ''}
+                  onChange={(e) => updateEducation(index, 4, e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
                 />
               </div>
@@ -90,8 +90,8 @@ const Education = ({ education = [], onChange }) => {
             <div className="md:col-span-2">
               <label className="block font-semibold mb-1">Description</label>
               <textarea
-                value={edu[4] || ''}
-                onChange={(e) => updateEducation(index, 4, e.target.value)}
+                value={edu[5] || ''}
+                onChange={(e) => updateEducation(index, 5, e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
               />
             </div>

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ResumeUploader from '../components/ResumeUploader';
-import PersonalInfo from '../components/PersonalInfo';
-import WorkExperience from '../components/WorkExperience';
-import Education from '../components/Education';
-import Skills from '../components/Skills';
-import Languages from '../components/Languages';
-import Stepper from '../components/Stepper';
+import ResumeUploader from '../../components/ResumeUploader';
+import PersonalInfo from '../../components/PersonalInfo';
+import WorkExperience from '../../components/WorkExperience';
+import Education from '../../components/Education';
+import Skills from '../../components/Skills';
+import Languages from '../../components/Languages';
+import Stepper from '../../components/Stepper';
 
 const UploadResume = () => {
+	const URL = 'http://192.168.100.71:4444/api/';
 	console.log('uploadResume called');
 	
 	const navigate = useNavigate();
@@ -27,6 +28,57 @@ const UploadResume = () => {
 			setFormData(savedData);
 		}
 	}, []);
+
+	const handleFileUpload = async (file) => {
+
+
+		try {
+			// Create FormData object to send the file
+			const formDataToSend = new FormData();
+			formDataToSend.append('resume', file);
+
+			// Send the file to the backend
+			const response = await fetch(URL+'resume/upload/', {
+				method: 'POST',
+				credentials: 'include',
+				body: formDataToSend,
+			});
+
+			if (!response.ok) {
+				throw new Error('Failed to upload resume');
+			}
+
+			const data = await response.json();
+
+			console.log('data : ', data);
+			
+			
+			// Update form data with the parsed information
+			setFormData(prev => ({
+			...prev,
+			file,
+			personalInfo: data.personalInfo || {},
+			workExperiences: data.workExperiences || [],
+			education: data.education || [],
+			skills: data.skills || [],
+			languages: data.languages || []
+			}));
+
+			// Save to localStorage
+			localStorage.setItem('resumeForm', JSON.stringify({
+			...formData,
+			file: null, // Don't store the file in localStorage
+			personalInfo: data.personalInfo || {},
+			workExperiences: data.workExperiences || [],
+			education: data.education || [],
+			skills: data.skills || [],
+			languages: data.languages || []
+			}));
+
+		} catch (err) {
+			console.log(err.message || 'An error occurred while uploading the resume');
+		}
+	};
 
 	const handleContinue = () => {
 		// Validate required fields
@@ -48,7 +100,9 @@ const UploadResume = () => {
 		}
 
 		localStorage.setItem('resumeForm', JSON.stringify(formData));
-		navigate('/review-info');
+		console.log('data : ', formData);
+		
+		navigate('/upload-resume/review-info');
 	};
 
 	const Header = () => {
@@ -71,15 +125,15 @@ const UploadResume = () => {
 			{/* Header */}
 			<Header />
 
-			<div className="flex flex-col py-12 gap-2 px-2 max-w-4xl w-full border-2">
+			<div className="flex flex-col py-12 gap-2 px-2 max-w-4xl w-full">
 				<Stepper currentStep={1} />
 				
 				<div className="bg-white rounded-md p-8 shadow mb-8">
 					<h2 className="text-2xl font-bold mb-6">Upload your Resume</h2>
-					<ResumeUploader onFileUpload={(file) => setFormData(prev => ({ ...prev, file }))} />
+					<ResumeUploader onFileUpload={(file) => handleFileUpload(file)} />
 				</div>
 
-				<div className="bg-white rounded-md shadow py-4 px-8 mb-8">
+				<div className="bg-white flex flex-col gap-4 rounded-md shadow p-8 mb-8">
 					<h2 className="text-2xl font-bold mb-6">Preview Your Information</h2>
 					
 					<PersonalInfo 

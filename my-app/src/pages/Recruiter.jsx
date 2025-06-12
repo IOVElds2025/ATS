@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Recruiter.css';
 import FinalCarousel from '../components/FinalCarousel';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';

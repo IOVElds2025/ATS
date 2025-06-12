@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react';
 import UploadCloudIcon  from '../assets/icons/uploadIcon.png';
 
 const ResumeUploader = ({ onFileUpload }) => {
+
+  const URL = 'http://192.168.100.71:4444/api/';
+  
   const [uploadedFile, setUploadedFile] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -71,7 +74,7 @@ const ResumeUploader = ({ onFileUpload }) => {
           <p className="mb-2 font-semibold">{uploadedFile.name}</p>
           <button 
             onClick={removeFile}
-            className="text-red-600 underline cursor-pointer"
+            className="text-[#E84435] underline cursor-pointer"
           >
             Remove
           </button>
@@ -82,7 +85,7 @@ const ResumeUploader = ({ onFileUpload }) => {
           <p className="font-semibold mb-2">Drag and drop your resume here, or</p>
           <button 
             onClick={handleBrowseClick}
-            className="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 mb-2 cursor-pointer"
+            className="bg-[#E84435] text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 mb-2 cursor-pointer"
           >
             Browse files
           </button>

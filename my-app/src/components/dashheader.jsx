@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { Bell, ChevronDown } from 'lucide-react';
 
-// Import the Audiowide font
-const fontImport = document.createElement('style');
-fontImport.innerHTML = `
-  @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
-`;
-document.head.appendChild(fontImport);
-
 const DashHeader = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
