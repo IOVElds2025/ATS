@@ -9,6 +9,8 @@ import Languages from '../components/Languages';
 import Stepper from '../components/Stepper';
 
 const UploadResume = () => {
+	console.log('uploadResume called');
+	
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		personal: [],
@@ -64,12 +66,12 @@ const UploadResume = () => {
 	}
 
 	return (
-		<div className="min-h-screen w-full flex flex-col text-gray-800 font-sans bg-[#D9D9D9]">
+		<div className="min-h-screen w-full flex flex-col justify-center items-center text-gray-800 font-sans bg-[#D9D9D9]">
 			
 			{/* Header */}
 			<Header />
 
-			<div className="flex flex-col w-full py-12 gap-8 px-2 md:px-14 lg:px-28 border-2">
+			<div className="flex flex-col py-12 gap-2 px-2 max-w-4xl w-full border-2">
 				<Stepper currentStep={1} />
 				
 				<div className="bg-white rounded-md p-8 shadow mb-8">
@@ -77,7 +79,7 @@ const UploadResume = () => {
 					<ResumeUploader onFileUpload={(file) => setFormData(prev => ({ ...prev, file }))} />
 				</div>
 
-				<div className="bg-white rounded-md shadow py-8 px-28 mb-8">
+				<div className="bg-white rounded-md shadow py-4 px-8 mb-8">
 					<h2 className="text-2xl font-bold mb-6">Preview Your Information</h2>
 					
 					<PersonalInfo 

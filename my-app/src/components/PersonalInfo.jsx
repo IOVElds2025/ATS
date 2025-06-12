@@ -8,9 +8,9 @@ const PersonalInfo = ({ data = [], onChange }) => {
   };
 
   return (
-    <div className="mb-8 flex flex-row">
+    <div className="mb-8 flex flex-row ">
       <h3 className="text-xl font-bold mb-4 w-1/2">Personal Information</h3>
-      <div className="grid grid-cols-1 md:grid-cols-1 gap-6 w-1/2">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-2 w-1/2">
         <div>
           <label className="block font-semibold mb-1">Full Name <span className="text-red-500">*</span></label>
           <input
@@ -31,7 +31,7 @@ const PersonalInfo = ({ data = [], onChange }) => {
             className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50"
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 w-full">
           <div>
             <label className="block font-semibold mb-1">Phone <span className="text-red-500">*</span></label>
             <select
@@ -50,7 +50,7 @@ const PersonalInfo = ({ data = [], onChange }) => {
             required
             value={data[3] || ''}
             onChange={(e) => handleChange(3, e.target.value)}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-md bg-gray-50 mt-6"
+            className=" w-full flex-1 px-4 py-2 border border-gray-300 rounded-md bg-gray-50 mt-6"
           />
         </div>
         <div>

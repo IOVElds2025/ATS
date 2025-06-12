@@ -13,16 +13,24 @@ function App() {
   return (
     <div>
       <Routes>
+        {/* candidate */}
         {/* public */}
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/recruiter" element={<Recruiter />} />
         <Route path="/hivelandingpage" element={<HiveLandingPage />} />  
-
         {/* most to be protected */}
         <Route path="/upload-resume" element={<UploadResumePage />} />
         <Route path="/dashboard" element={<ClientDashboard />} />
+
+
+
+
+        {/* recruiter */}
+        {/* public */}
+        <Route path="/recruiter" element={<Recruiter />} />
+        <Route path="/explore" element={<Explore />} />
+        {/* most to be protected */}
+
       </Routes>
     </div>
   );

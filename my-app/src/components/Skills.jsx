@@ -23,8 +23,8 @@ const Skills = ({ skills = [], onChange }) => {
   };
 
   return (
-    <div className="mb-8">
-      <h3 className="text-xl font-bold mb-4">Skills</h3>
+    <div className="mb-8 flex flex-row w-full">
+      <h3 className="text-xl font-bold w-1/2">Skills</h3>
       <input
         type="text"
         placeholder="Enter your skills"
