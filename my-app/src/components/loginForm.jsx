@@ -34,18 +34,21 @@ const LoginForm = ({setOpen}) => {
 			
 			const data = await res.json();
 			console.log('data : ', data);
-			console.log('cookies1 : ', res.headers.values());
-			console.log('cookies2 : ', data['Jwt-Access']);
-			console.log('cookies3 : ', res.headers.get('Jwt-Access'));
+			console.log('Request Headers:');
+			for (const [key, value] of res.headers.entries()) {
+				console.log(`${key}: ${value}`);
+			}
 
-			document.cookie = 'Jwt_Access='+data['Jwt_Access'];
-			document.cookie = 'Jwt_Refresh='+data['Jwt_Refresh'];
+
+			document.cookie = 'Jwt-Access='+data['Jwt-Access'];
+			// document.cookie = `Access-Token=${json["Access-Token"]}`
+			document.cookie = 'Jwt-Refresh='+data['Jwt-Refresh'];
 
 			if (res.ok) {
 				console.log('succes');
 				// setOpen(false);
 				navigate('/upload-resume/preview-info');
-			} else {				
+			} else {
 				setMessage(data.detail || 'Login failed. Please check your credentials.');
 			}
 		} catch (error) {

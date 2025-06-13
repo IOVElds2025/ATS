@@ -26,6 +26,8 @@ function App() {
         <Route path="/upload-resume/review-info" element={<ReviewInfo />} />
         <Route path="/upload-resume/complete-profile" element={<CompleteProfile />} />
         <Route path="/candidate/dashboard" element={<CandidateDashboard />} />
+        
+
 
 
 

@@ -15,13 +15,13 @@ const ApplicationCard = ({ title, company, date, status }) => {
   };
 
   return (
-    <div className="border rounded-xl p-6 bg-white flex justify-between items-center">
+    <div className="border rounded-sm p-6 bg-white flex justify-between items-center">
       <div>
         <div className="font-bold text-xl mb-1">{title}</div>
         <div className="text-lg">{company}</div>
         <div className="text-gray-500 text-sm mt-1">{date}</div>
       </div>
-      <span className={`${getStatusColor(status)} px-6 py-2 rounded-full font-medium`}>
+      <span className={`${getStatusColor(status)} px-6 py-2 rounded-sm font-medium`}>
         {status}
       </span>
     </div>
@@ -52,7 +52,7 @@ const RecentApplications = ({ showDetailed, onToggleDetailed }) => {
 
   if (showDetailed) {
     return (
-      <div className="bg-white rounded-2xl shadow p-6 mb-8">
+      <div className="bg-white rounded-md shadow p-6 mb-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold">Recent Applications</h2>
           <button 
@@ -72,7 +72,7 @@ const RecentApplications = ({ showDetailed, onToggleDetailed }) => {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow p-6 mb-8">
+    <div className="bg-white rounded-md shadow p-6 mb-8">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">Recent Applications</h2>
         <button 
